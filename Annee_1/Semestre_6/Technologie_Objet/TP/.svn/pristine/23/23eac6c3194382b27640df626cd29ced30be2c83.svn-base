@@ -1,7 +1,0 @@
-allumettes/Jouer.java:24: error: constructor Arbitre in class Arbitre cannot be applied to given types;
-			Arbitre arbitre = new Arbitre(j1, j2, confiant);
-			                  ^
-  required: Joueur,Joueur
-  found: Joueur,Joueur,Boolean
-  reason: actual and formal argument lists differ in length
-1 error
