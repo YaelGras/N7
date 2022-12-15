@@ -1,0 +1,14 @@
+a.out
+ficout.txt
+fournitures
+main
+minishell
+minishell5.c
+minishell6.c
+minishell8.c
+minishell9.c
+minishellfin.c
+minishell_sans_wait.c
+readcmd.c
+readcmd.h
+Rendu projet

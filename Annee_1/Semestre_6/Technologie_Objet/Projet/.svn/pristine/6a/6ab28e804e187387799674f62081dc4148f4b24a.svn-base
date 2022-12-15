@@ -1,0 +1,55 @@
+package src;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import src.Commande_Jouer.actionJouer;
+
+public class Commande_Quitter extends JButton implements Commande {
+	/**
+	 * fenetre à quitter si on utilise cette commande
+	 */
+	private JFrame fenetre;
+	
+	public Commande_Quitter(JFrame fenetre) {
+		super();
+		this.fenetre = fenetre;
+		
+		//this.setText(this.getNom());	
+		//this.setFont(new Font("Arial", Font.BOLD, 30));
+		//this.setForeground(Color.RED);
+		
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		
+		this.addActionListener(new actionQuitter(this));
+	}
+	
+	@Override
+	public void executer() {
+		this.fenetre.dispose();
+	}
+
+	@Override
+	public String getNom() {
+		return "Quitter";
+	}
+
+	
+	static class actionQuitter implements ActionListener {
+		private Commande_Quitter modele;
+		
+		public actionQuitter(Commande_Quitter bouton) {
+			this.modele = bouton;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			this.modele.executer();
+		}
+		
+	}
+}

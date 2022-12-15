@@ -1,0 +1,44 @@
+package src;
+
+public class Case {
+
+	private boolean occupe;
+	private Affichage batimentOuRoute;
+	private int x;
+	private int y;
+
+	Case(int x, int y) {
+		this.x = x;
+		this.y = y;
+		this.occupe = false;
+	}
+
+	public int getX() {
+		return this.x;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public boolean getOccupe() {
+		return this.occupe;
+	}
+
+	public Affichage getStructure() throws CaseVideException {
+		if (!this.occupe) {
+			throw new CaseVideException();
+		} else {
+			return this.batimentOuRoute;
+		}
+	}
+
+	public void ajouterStructure(Affichage batimentOuRoute) {
+		this.batimentOuRoute = batimentOuRoute;
+		this.occupe = true;
+	}
+
+	public void viderCase() {
+		this.occupe = false;
+	}
+}

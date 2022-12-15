@@ -1,0 +1,31 @@
+package src;
+
+import javax.swing.*;
+import javax.imageio.ImageIO;
+
+public class Figure {
+
+	private ImageIO image;
+	private Zone zone;
+
+	public Figure(ImageIO image) {
+		this.image = image;
+	}
+
+	public void afficher() {
+
+	}
+
+	public void chargerImage() {
+
+	}
+
+	// getters
+	public ImageIO getImage() {
+		return this.image;
+	}
+
+	public Zone getZone() {
+		return this.zone;
+	}
+}

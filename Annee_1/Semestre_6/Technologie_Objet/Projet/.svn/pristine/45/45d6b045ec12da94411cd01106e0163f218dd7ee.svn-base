@@ -1,0 +1,62 @@
+package src.menus.boutons;
+
+import java.io.FileNotFoundException;
+
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
+import src.PartieCourante;
+import src.affichagePartie.AffichagePartie;
+import src.carte.Carte;
+import src.menus.MenuRepriseSauvegarde;
+import src.sauvegarde.Sauvegarder;
+
+public class Bouton_ContinuerPartie extends Boutons {
+	
+	private JFrame fenetre;
+	private MenuRepriseSauvegarde menuRepriseSauvegarde;
+	private AffichagePartie continuePartie;
+	private JList<String> listeVille;
+	
+	
+	public Bouton_ContinuerPartie(JFrame fenetre, JList<String> listeVille, MenuRepriseSauvegarde menuRepriseSauvegarde) {
+		super();
+		this.fenetre = fenetre;
+		this.menuRepriseSauvegarde = menuRepriseSauvegarde;
+		this.listeVille = listeVille;
+		//this.setText(this.getNom());
+		
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		
+		this.addActionListener(this);
+	}
+
+	@Override
+	public void executer() {
+		//JOptionPane.showMessageDialog(this.fenetre.getContentPane(), 
+		//		"En cours de developpement");
+		if (!this.listeVille.isSelectionEmpty()) {
+			try {
+				PartieCourante ville = Sauvegarder.reprendreSauvegarde(this.listeVille.getSelectedValue());
+				//Bouton_Save.setPartieCourante(ville);
+				this.menuRepriseSauvegarde.effacer();
+				this.continuePartie = new AffichagePartie(this.fenetre, ville.getCarte());
+				this.continuePartie.afficher();
+			} catch (FileNotFoundException e) {
+				JOptionPane.showMessageDialog(this.fenetre.getContentPane(), 
+				"Le fichier de sauvegarde de cette partie n'a pas été trouvé");
+			}
+		} else {
+			JOptionPane.showMessageDialog(this.fenetre.getContentPane(), 
+				"Merci de sélectionner une ville pour pouvoir reprendre une partie");
+		}
+	}
+
+	@Override
+	public String getNom() {
+		return "Continuer la partie";
+	}
+
+}

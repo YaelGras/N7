@@ -1,0 +1,29 @@
+package src;
+
+import java.awt.*;
+import java.io.*;
+import javax.imageio.ImageIO;
+
+public abstract class Affichage {
+
+	private Figure dessin;
+
+	public void afficher() {
+
+	}
+
+	public Affichage() {
+
+	}
+
+	// getters
+	public Figure getDessin() {
+		return this.dessin;
+	}
+
+	public abstract Case[] getCases();
+
+	public abstract Case getCoin();
+
+	public abstract void setCoin(Case coin);
+}

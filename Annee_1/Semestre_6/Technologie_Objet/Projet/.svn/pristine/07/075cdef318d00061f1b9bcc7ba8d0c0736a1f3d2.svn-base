@@ -1,0 +1,13 @@
+package src;
+
+/** Exception qui indique que la case est vide.
+ */
+public class CaseVideException extends Exception {
+
+	/** Initaliser une ConfigurationException avec le message précisé.
+	  * @param message le message explicatif
+	  */
+	public CaseVideException() {
+		super();
+	}
+}

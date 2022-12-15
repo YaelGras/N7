@@ -1,0 +1,76 @@
+1d0
+< Tour de Xavier
+3,7c2,18
+< Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+< Impossible ! Nombre invalide : 5 Coup invalide car (> 3) : 5
+< Impossible ! Nombre invalide : 0 Coup invalide car (< 1) : 0
+< Impossible ! Nombre invalide : -1 Coup invalide car (< 1) : -1
+< Xavier prend 3 allumette.
+---
+> Xavier, combien d'allumette ? Xavier prend 4 allumette.
+> Impossible ! Nombre invalide : 4 (> 3)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 5 allumette.
+> Impossible ! Nombre invalide : 5 (> 3)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 0 allumette.
+> Impossible ! Nombre invalide : 0 (< 1)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend -1 allumette.
+> Impossible ! Nombre invalide : -1 (< 1)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+9d19
+< Tour de Ordinateur
+13d22
+< Tour de Xavier
+15c24
+< Xavier prend 3 allumette.
+---
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+17d25
+< Tour de Ordinateur
+21d28
+< Tour de Xavier
+23c30
+< Xavier prend 1 allumette.
+---
+> Xavier, combien d'allumette ? Xavier prend 1 allumette.
+25d31
+< Tour de Ordinateur
+27c33,53
+< Ordinateur prend 1 allumette.
+---
+> Ordinateur prend 3 allumette.
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 4 allumette.
+> Impossible ! Nombre invalide : 4 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+> Impossible ! Nombre invalide : 3 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 2 allumette.
+> Impossible ! Nombre invalide : 2 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 0 allumette.
+> Impossible ! Nombre invalide : 0 (< 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend -1 allumette.
+> Impossible ! Nombre invalide : -1 (< 1)
+29,32c55,56
+< Tour de Xavier
+< Allumettes restantes : 3
+< Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+< Xavier prend 3 allumette.
+---
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 1 allumette.

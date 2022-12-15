@@ -1,0 +1,54 @@
+package src;
+import java.io.Serializable;
+
+import src.affichagePartie.*;
+import src.batiments.Commerce;
+import src.batiments.Habitation;
+import src.batiments.Hopital;
+import src.batiments.Industrie;
+import src.carte.Carte;
+public class Finances implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 366228672365772902L;
+	int compteVille;
+	Carte carte;
+	
+	Finances(int compte, Carte carte){
+		this.compteVille = compte;
+		this.carte = carte;
+	}
+	
+	public void depenser(int argent) {
+		compteVille -= argent;
+		StatFinances.updateArgent(this.compteVille);
+	}
+	
+	public void collecter() {
+		for(Structure batiment : this.carte.getListeStructure().values()) {
+			if (batiment instanceof Habitation) {
+				Habitation bat = (Habitation) batiment;
+				this.compteVille += 100 * bat.getNbHabitants();
+			} else if (batiment instanceof Commerce) {
+				Commerce bat = (Commerce) batiment;
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += 1000 * (3 + bat.getNiveau()) * (0.3 + 0.7*((double) bat.getNbEmployes())/bat.getMaxEmployes());
+			} else if (batiment instanceof Hopital) {
+				Hopital bat = (Hopital) batiment;
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += 200 * (3 + bat.getNiveau()) * (0.3 + 0.7*((double) bat.getNbEmployes())/bat.getMaxEmployes());
+			} else if (batiment instanceof Industrie) {
+				Industrie bat = (Industrie) batiment;
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += -100 * bat.getNbEmployes();
+				this.compteVille += 1000 * (3 + bat.getNiveau()) * (0.3 + 0.7*((double) bat.getNbEmployes())/bat.getMaxOuvriers());
+			}
+			
+		}
+		StatFinances.updateArgent(this.compteVille);
+	}
+}

@@ -1,0 +1,93 @@
+Nom       : 
+Prénom    : 
+Groupe TP : 
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+
+* Temps passé sur la V1 : 17 heures ... minutes
+* Temps passé sur la V2 : ... heures ... minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+Il ne faut pas quelle soit vérifiée car il ne faut pas qu'elle apparaisse dans la
+signature de la méthode retirer.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1) Créer la classe pour la stratégie qui hérite de la classe abstraite StrategieAbstraite et qui réalise l'interface Strategie.
+2) Implémenter dans la classe créée getPrise(Jeu jeu) selon les règles du jeu,
+        la méthode toString() et le getNom(). 
+        /!\ Le getNom() permets de différencier deux stratégie identiques affecté
+        à 2 joueur différents quand cela est nécessaire pour jouer (par exemple 
+        pour la strategie humain), il faut donc dans le construceur de la strategie
+        pouvoir enregistrer le nom du joueur. Si cela n'est pas nécéssaire, on 
+        renvoie un string vide "". 
+
+3) Si le constructeur ne prends pas de paramètre particulier, ajouter dans la méthode
+        ajouterStrategy() de la classe jouer la nouvelle strategie.
+   Si le constructeur prends le nom du joueur en paramètre, ajouter dans la méthode 
+        getStrategy(..) de la classe jouer un cas correspondant
+
+Exemple : 
+1) Créer classe LenteStrategie extends StrategieAbstraite implements Strategie
+
+2) Dans la classe créée 
+public int getPrise(Jeu jeu) {
+        return 1;
+}
+
+public String toString(){
+        return "lente";
+        }
+
+public String getNom() {
+        return "";
+        }
+
+3) Dans la classe Jouer, dans la méthode ajoueterStrategy() :
+        StrategieAbstraite.addStrategy(new LenteStrategie());	
+
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+La classe abstraite Strategie connait toutes les strategies possible depuis le 
+début de la partie ainsi le getStrategie qui est une méthode de classe permet
+de transformer un String en une stratégie connue parmis toutes celle ajoutée en 
+début de partie. Ainsi l'arbitre peut demander si on veut changer de stratégie 
+en cours de partie. Si c'est le cas il fera appel de la fonction getStrategie 
+avec le choix du joueur et le nom du joueur.
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+...
+
+--------------------------------------------------------------------------------

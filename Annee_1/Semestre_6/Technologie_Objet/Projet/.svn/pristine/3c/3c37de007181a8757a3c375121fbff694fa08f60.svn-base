@@ -1,0 +1,65 @@
+package src;
+
+import javax.imageio.*;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+
+
+
+
+public class MenuPrincipal extends JPanel {
+	
+	private JFrame fenetre;	
+	private Commande_Jouer jouer;
+	private Commande_Parametre parametre;
+	private Commande_Quitter quitter;
+	
+	
+	public MenuPrincipal(JFrame fenetre) {
+		super();
+		this.fenetre = fenetre;
+		this.setBounds(0, 0, 1280, 960); 
+		this.setLayout(null);
+		//this.setSize(1280, 960);
+		
+		this.jouer = new Commande_Jouer(this.fenetre, this);
+		this.quitter = new Commande_Quitter(this.fenetre);
+		this.parametre = new Commande_Parametre(this.fenetre, this);
+		
+		int largeur = 2*this.getWidth()/3;
+		int hauteur = this.getHeight()/7;
+				
+		this.add(this.jouer);
+		this.add(this.parametre);
+		this.add(this.quitter);
+		
+		this.jouer.setBounds(this.getWidth()/6, this.getHeight()/7, largeur, hauteur);
+		this.parametre.setBounds(this.getWidth()/6, 3*this.getHeight()/7, largeur, hauteur);
+		this.quitter.setBounds(this.getWidth()/6, 5*this.getHeight()/7, largeur, hauteur);
+		
+		this.afficher();
+		
+	}
+	
+	public void afficher() {
+		this.setVisible(true);
+	}
+	
+	public void effacer() {
+		this.setVisible(false);
+	}
+	
+	public void paintComponent(Graphics g)
+    {
+        //Chargement de l"image de fond
+        try {
+        	super.paintComponent(g);
+            Image img = ImageIO.read(new File("fond_menu_principal.jpg"));
+            g.drawImage(img, 0, 0, this.fenetre.getWidth(), this.fenetre.getHeight(), this.fenetre);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur image de fond: " +e.getMessage());
+        }
+    }
+}

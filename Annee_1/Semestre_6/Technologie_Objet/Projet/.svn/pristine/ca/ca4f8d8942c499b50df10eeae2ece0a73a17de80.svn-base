@@ -1,0 +1,70 @@
+package src.affichagePartie;
+
+import java.awt.event.*;
+import javax.swing.*;
+import src.carte.Carte;
+
+public class AffichagePartie extends JPanel implements ComponentListener {
+
+    private JFrame fenetre;
+    private BandeStatistiques statistiques;
+    public static AffichageCarte affichageCarte;
+
+    public AffichagePartie(JFrame fenetre, Carte carte) {
+        super();
+        this.fenetre = fenetre;
+
+		this.setLayout(null);
+
+        this.statistiques = new BandeStatistiques(this.fenetre, this);
+        this.affichageCarte = new AffichageCarte(this.fenetre, this, carte);
+        
+        this.add(this.statistiques);
+        this.add(this.affichageCarte);
+        
+        this.fenetre.getContentPane().add(this);
+		this.fenetre.addComponentListener((ComponentListener) this);
+		
+		Thread chronoEcran = new Thread(new Chrono());
+		chronoEcran.start();
+		
+        updatePosition();
+		this.setVisible(true);
+		
+    }
+
+    public void effacer() {
+        this.setVisible(false);
+    }
+ 
+    public void afficher() {
+        this.setVisible(true);
+    }
+    
+
+    private void updatePosition() {
+        this.setBounds(0, 0, this.fenetre.getWidth(), this.fenetre.getHeight()); 
+    
+        this.statistiques.setBounds(0, 0, this.getWidth(), 3*this.getHeight()/40);
+        this.statistiques.updatePosition();
+        
+        this.affichageCarte.setBounds(0, 3*this.getHeight()/40, this.getWidth(), this.getHeight());
+    }
+
+    @Override
+	public void componentResized(ComponentEvent e){
+        this.updatePosition();
+    }
+	
+	@Override
+	public void componentHidden(ComponentEvent arg0) {
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent arg0) {
+	}
+
+	@Override
+	public void componentShown(ComponentEvent arg0) {
+	}
+}

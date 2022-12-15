@@ -1,0 +1,328 @@
+package src;
+
+//import javax.media.GainControl;
+import java.io.*;
+import java.time.*;
+import java.util.*;
+import src.affichagePartie.*;
+import src.batiments.Batiment;
+import src.batiments.Habitation;
+import src.batiments.Usine;
+import src.carte.*;
+import javax.sound.sampled.*;
+
+import java.util.Timer;
+
+import javax.swing.JFrame;
+
+
+
+public class PartieCourante implements Serializable{
+	
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5606568934902184848L;
+
+	private transient Timer timer;
+	
+	private transient Timer musique;
+	
+	private static boolean pause;
+	
+	private static boolean musiqueJoue;
+	
+	private Carte carte;
+
+	private Finances finances;
+	
+	private int nbrTotHab;
+	
+	private long tempsInter;//En milisecondes
+	
+	private long tempsTotal;//En milisecondes
+	
+	private int nombreIter;
+	
+	private int numeroListe = -1;
+	
+	private List<String> playList = PartieCourante.construireListe();
+	
+	private Instant dernierTempsPris;
+	
+	private String nom;
+	
+	
+	public PartieCourante(int nbTotHab, Carte carte, Finances finances, String nom, JFrame fenetre) {
+		this.carte = carte;
+		this.finances = finances;
+		this.tempsTotal = 0;
+		this.tempsInter = 0;
+		this.nombreIter = 0;
+		this.nbrTotHab = 0;
+		this.nom = nom;
+		this.dernierTempsPris = Instant.now();
+		PartieCourante.pause = false;
+		PartieCourante.musiqueJoue = true;
+		PartieCourante.arretMusique = false;
+		this.setTimer();
+		this.setMusique();
+		this.setVolume(1f);
+		
+	}
+	public PartieCourante(Carte carte, String nom, JFrame fenetre) {
+		this(0, carte, new Finances(100000, carte), nom, fenetre);
+	}
+	
+	public PartieCourante(String nom, JFrame fenetre) {
+		this(new Carte(10, 10), nom, fenetre);
+	}
+	
+	public PartieCourante(String nom) {
+		this(nom, new JFrame());
+	}
+	
+	public PartieCourante() {
+		this("Première Partie");
+	}
+	
+	
+	
+	public static void setPause(boolean pause) {
+		PartieCourante.pause = pause;
+	}
+	
+	public static void setMusique(boolean musiqueJoue) {
+		PartieCourante.musiqueJoue = musiqueJoue;
+	}
+	
+	public Finances getFinances() {
+		return this.finances;
+	}
+	
+	public Carte getCarte() {
+		return this.carte;
+	}
+	
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public void getNombresHabitantsTotales() {
+		nbrTotHab = 0;
+		Map<Case, Structure> batiments = this.carte.getListeStructure();
+		for(Structure batiment : batiments.values()) {
+			if (batiment instanceof Habitation) {
+				Habitation bat = (Habitation) batiment;
+				nbrTotHab += bat.getNbHabitants();
+			}
+			
+		}
+		
+		StatHabitants.updatePopulation(nbrTotHab);
+	}
+	
+	public void getSatisfaction() {
+		double satisfaction = 0;
+		Map<Case, Structure> batiments = this.carte.getListeStructure();
+		for(Structure batiment : batiments.values()) {
+			if (batiment instanceof Habitation) {
+				Habitation bat = (Habitation) batiment;
+				satisfaction += ((double) bat.getSatisfaction())/nbrTotHab;
+			}
+			
+		}
+		int bonheur = (int) satisfaction;
+		StatHabitants.updateBonheur(bonheur + (satisfaction - (double) bonheur > 0.5 ? 1 : 0));
+	}
+	
+	public void getTemps() {
+		Affichage_titre.updateDay(dayTime(tempsTotal));
+		System.out.println(timeTime(tempsTotal));
+		Affichage_titre.updateTime(timeTime(tempsTotal));
+	}
+	
+	public void getEnergie() {
+		int energie = 0;
+		Map<Case, Structure> batiments = this.carte.getListeStructure();
+		for(Structure batiment : batiments.values()) {
+			if (batiment instanceof Usine) {
+				Usine bat = (Usine) batiment;
+				energie += bat.getEnergieProduite();
+			} else if (batiment instanceof Batiment) {
+				Batiment bat = (Batiment) batiment;
+				energie -= bat.getEnergieConsomme();
+			}
+		}
+		StatFinances.updateEnergie(energie);
+	}
+	
+	public void setTimer() {
+		this.timer = new Timer();
+		this.timer.schedule(new TimerTask(){
+			
+			public void run() {
+					if (!pause) {
+						Instant tempsPris = Instant.now();
+						tempsInter = tempsPris.toEpochMilli()-dernierTempsPris.toEpochMilli();
+						tempsTotal += (tempsInter > 200 ? 200: tempsInter);
+						nombreIter += 1;
+						System.out.println(nombreIter);
+						if (nombreIter >= 60) {
+							nombreIter = 0;
+							finances.collecter();
+							getNombresHabitantsTotales();
+							getSatisfaction();
+							getTemps();
+						}
+						
+						
+					}
+					System.out.println("Aha");
+			}
+			
+		}, 0, 100);
+	}
+
+	public void stopTimer() {
+		if (!pause) {
+			PartieCourante.setPause(true);
+		}
+		this.timer.cancel();
+	}
+	
+	
+	public void setMusique() {
+		
+		this.musique = new Timer();
+		this.musique.schedule(new TimerTask(){
+			
+			public void run() {
+					if (musiqueJoue) {
+						numeroListe++;
+						numeroListe = numeroListe%playList.size();
+						musiqueJeu(playList.get(numeroListe));
+					}
+			}
+			
+		}, 0, 1);
+	}
+	
+	public void stopMusique() {
+		if (musiqueJoue) {
+			PartieCourante.setMusique(false);
+			PartieCourante.arretMusique = true;
+		}
+		this.musique.cancel();
+	}
+
+	private static final int UNJOUR = 240;
+	
+	private static String dayTime(long temps) {
+		int[] annee = anneeMoisNombre(temps);
+		return "" + ((temps/UNJOUR)%moisTime(Mois.values()[annee[1]], annee[0])+1) + " " + Mois.values()[annee[1]] + " " + annee[0];
+	}
+	
+	private static String timeTime(long temps) {
+		System.out.println(temps);
+		int horaire = (int) (temps % UNJOUR);
+		System.out.println(temps);
+		return (horaire / (UNJOUR / 24) < 10 ? "0" : "") + horaire / (UNJOUR / 24) + " : " + ((60 / (UNJOUR / 24)) * (horaire % (UNJOUR / 24)) < 10 ? "0" : "") + ((60 / (UNJOUR / 24)) * (horaire % (UNJOUR / 24)));
+	}
+	
+	private static int moisTime(Mois mois, int annee) {
+		int nbrJour = 31;
+		switch (mois) {
+			case fevrier : 
+				nbrJour -= 1 + ((annee%4 == 0 & annee%25 != 0) | annee%16 == 0 ? 0 : 1);
+			case avril : case juin : case septembre : case novembre :
+				nbrJour--;
+			default:
+				
+		}
+		return nbrJour;
+	}
+	
+	private static int[] anneeMoisNombre(long time) {
+		long temps = time;
+		int ansPasses = 0;
+		int nbrMois = 0;
+		while (temps > 0) {
+			temps -= UNJOUR * moisTime(Mois.values()[nbrMois], 2000 + ansPasses);
+			nbrMois++;
+			nbrMois%= 12;
+			ansPasses += (nbrMois==0? 1 : 0);
+		}
+		int[] retour = {2000 + ansPasses, nbrMois};
+		return retour;
+	}
+	
+	
+	private static enum Mois {
+		janvier, fevrier, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre
+	}
+
+
+    public void afficher(JFrame fenetre) {
+		/*Pour que l'on puisse lancer l'affichage dans la fenetre donnée*/
+		// Soit je te donne la fenetre dans cette fonction et donc tu as a chaque fois besoin de recréer un affichage soit tu le fait dans le constructeur.
+		AffichagePartie affichage = new AffichagePartie(fenetre, this.carte);
+		affichage.afficher();
+    }
+    
+    private transient FloatControl volume = null;
+    
+    private float hauteur = 0f;
+    
+    private static boolean arretMusique = false;
+    
+    private void musiqueJeu(String nomMusique) {
+    	try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nomMusique));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			this.volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			this.volume.setValue(this.hauteur);
+			clip.start();
+			long tempsPasse = 0;
+			long dernierTempsPris = System.currentTimeMillis();
+			while (clip.getMicrosecondLength()*1000 > tempsPasse) {
+				if (arretMusique) {
+					clip.stop();
+					clip.close();
+					return;
+				} else if (!musiqueJoue & clip.isRunning()) {
+					clip.stop();
+				} else if (musiqueJoue & !clip.isRunning()) {
+					clip.start();
+					dernierTempsPris = System.currentTimeMillis();
+				} else if (musiqueJoue){ 
+					long nouveauTempsPris = System.currentTimeMillis();
+					tempsPasse = nouveauTempsPris - dernierTempsPris;
+					dernierTempsPris = nouveauTempsPris;
+				}
+			}
+    	} catch (UnsupportedAudioFileException  | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
+    	
+    }
+    
+   
+    
+    public void setVolume(float level) {//Entre 0 et 1
+    	this.hauteur = (float) Math.max(10 * Math.log10(level * Math.pow(10, 0.6)), -80);
+    	if (this.volume != null) this.volume.setValue(this.hauteur);
+    }
+    
+    private static List<String> construireListe() {
+    	List<String> playlist = new ArrayList<String>();
+    	playlist.add("src/musique/musique1.wav");
+    	playlist.add("src/musique/musique2.wav");
+    	playlist.add("src/musique/musique3.wav");
+    	return playlist;
+    }
+}
+

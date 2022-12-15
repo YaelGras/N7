@@ -1,0 +1,18 @@
+package src.affichagePartie;
+
+public class Chrono implements Runnable {
+	private final int PAUSE = 30;
+	
+	public void run() {
+		
+		while (true) {
+			
+			//AffichagePartie.affichageCarte.repaint();
+			
+			try {
+				Thread.sleep(PAUSE);
+			} catch (InterruptedException e) {}
+					
+		}
+	}
+}

@@ -1,0 +1,28 @@
+Allumettes restantes : 13
+Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+Impossible ! Nombre invalide : 5 Coup invalide car (> 3) : 5
+Impossible ! Nombre invalide : 0 Coup invalide car (< 1) : 0
+Impossible ! Nombre invalide : -1 Coup invalide car (< 1) : -1
+Xavier prend 3 allumettes.
+
+Allumettes restantes : 10
+Ordinateur prend 1 allumettes.
+
+Allumettes restantes : 9
+Xavier prend 3 allumettes.
+
+Allumettes restantes : 6
+Ordinateur prend 1 allumettes.
+
+Allumettes restantes : 5
+Xavier prend 1 allumettes.
+
+Allumettes restantes : 4
+Ordinateur prend 1 allumettes.
+
+Allumettes restantes : 3
+Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+Xavier prend 3 allumettes.
+
+Xavier perd !
+Ordinateur gagne !

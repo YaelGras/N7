@@ -1,0 +1,85 @@
+Date de l'évaluation : lun. 07 mars 2022 09:06:31 CET
+
+Nombre de similitudes (voir evaluations/evaluation1/sim_java.txt) : 1
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 12/6	(voir evaluations/evaluation1//checkstyle.log)
+
+Classe OperationInterditeException : NON DÉFINIE (ou pas sur SVN)
+
+Procuration sur le jeu réel : Non identifiée
+
+OperationInterditeException : JAMAIS LEVÉE
+OperationInterditeException : JAMAIS RECUPÉRÉE
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ok
+
+AssertionError ne doit pas être récupérée... ok
+
+Autres exceptions récupérées :
+  | allumettes/Arbitre.java:77:         } catch (CoupInvalideException e) {
+  | allumettes/Jouer.java:35:       } catch (ConfigurationException e) {
+  | allumettes/TricheurStrategie.java:11:           } catch (CoupInvalideException e) {
+  | allumettes/TricheurStrategie.java:18:       } catch (CoupInvalideException e) {
+  | allumettes/HumainStrategie.java:21:         } catch (NoSuchElementException e1) {
+
+Utilisation de 'Scanner' : ok
+  | allumettes/HumainStrategie.java:7:  private Scanner scanner;
+  | allumettes/HumainStrategie.java:10:     this.scanner = new Scanner(System.in);
+
+Utilisation de 'split' : ok
+  | allumettes/Jouer.java:23:                   String[] infojoueur = args[i].split("@");
+
+Utilisation de 'Random' : ok
+  | allumettes/NaifStrategie.java:3:import java.util.Random;
+  | allumettes/NaifStrategie.java:6:    private Random rand;
+  | allumettes/NaifStrategie.java:9:        this.rand = new Random();
+
+Utilisation de '3' : ok
+
+Affichage de 'Impossible !' : ok
+
+Utilisation de 'System.exit' : ok
+
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+Test exemplePresqueSujet : NON CONFORME (voir evaluations/evaluation1/exemplePresqueSujet.diff)
+Test exempleTricheurSujet : NON CONFORME (voir evaluations/evaluation1/exempleTricheurSujet.diff)
+Test exempleConfiantTricheurSujet : NON CONFORME (voir evaluations/evaluation1/exempleConfiantTricheurSujet.diff)
+Test exempleRobustesse : NON CONFORME (voir evaluations/evaluation1/exempleRobustesse.diff)
+Test exempleHumainTricheurExpert : NON CONFORME (voir evaluations/evaluation1/exempleHumainTricheurExpert.diff)
+Test exempleMaxLou : NON CONFORME (voir evaluations/evaluation1/exempleMaxLou.diff)
+Test exempleRapideRapide : NON CONFORME (voir evaluations/evaluation1/exempleRapideRapide.diff)
+Test exempleTricheurExpert : NON CONFORME (voir evaluations/evaluation1/exempleTricheurExpert.diff)
+
+Test RobustesseTest : Le test ne se termine pas !	(voir evaluations/evaluation1/RobustesseTest.log)
+        )
+        )
+        )
+        ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+    2) testerStrategieDoubleAtSymetrieConfiant(RobustesseTest)
+        org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+        ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+    4) testerStrategieDoubleAtConfiant(RobustesseTest)
+        org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+    5) testerStrategieDoubleAt(RobustesseTest)
+        org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+        ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+    8) testerSansStrategieSymetrieConfiant(RobustesseTest)
+        ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+    9) testerNomNonDefiniSymetrieConfiant(RobustesseTest)
+    10) testerStrategieDoubleAtSymetrie(RobustesseTest)
+        org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+    11) testerNomNonDefiniSymetrie(RobustesseTest)
+        org.junit.runners.model.TestTimedOutException: test timed out after 200 milliseconds
+
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+
+Vérification du respect du diagramme de classe...
+	Non fait car le projet n'est pas assez avancé
+
+Aucune classe de test (fichier *Test.java ou Test*.java) !

@@ -1,0 +1,38 @@
+public interface Batiment {
+
+	int[] getAccesRoute();
+
+	Parcelle[] getParcelles();
+
+	Case[] getCases();
+}
+
+// 3 niveau habitation
+// commerces :	alimentaire
+// 		mode
+// 		santé
+// 		centre commercial
+// 		biens manufacturés
+// 		loisir (parc d'attraction, cinema, salle de sport, restaurant, karaoke, bowling, billard, laser game, bar à jeux, bar)
+// centre de soin :	clinique
+// 			hopital
+// pompier :	2 niveaux
+// police :	police municipale
+// 		gendarmerie
+// energie :	
+// bureaux :	3 niveaux
+// industrie :	3 niveaux
+// ecoles :	primaire
+// 		collège / lycée
+// 		université
+// 		enseeiht
+// Banques :
+// Parc :	
+// Décharges
+// Parking : voiture/velo
+// tourisme :	hotel
+// 		musées
+// 		eglise
+// Pole emploi
+// Mairie
+//		

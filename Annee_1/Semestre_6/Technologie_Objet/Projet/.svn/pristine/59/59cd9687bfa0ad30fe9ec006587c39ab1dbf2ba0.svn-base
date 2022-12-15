@@ -1,0 +1,104 @@
+public abstract class Commerce implements Batiment {
+
+	private Case coin;
+    private String nom;
+	private int attractivite;
+    private int nbEmployes;
+    private int valorisationEmplois;
+	private int rotation;
+	private Carte carte;
+
+	public Commerce(String nom, Carte carte) {
+        this.nom = nom;
+		this.carte = carte;
+		this.coin = carte.getCase(0, 0);
+		this.attractivite = 0;
+		this.nbEmployes = 0;
+		this.rotation = 1;
+        this.valorisationEmplois = 0;
+
+        // this(nom, carte, carte.getCase(0,0), 0, 0, 0, 1);
+	}
+
+	public Commerce(String nom, Carte carte, Case coin, int attractivite, int nbEmployes, int valorisationEmplois, int rotation) {
+		this.nom = nom;
+        this.carte = carte;
+		this.coin = coin;
+		this.attractivite = attractivite;
+		this.nbHabitants = nbHabitants;
+        this.valorisationEmplois = valorisationEmplois;
+		this.rotation = rotation;
+	}
+
+	private int[] getCaseCarte(int x, int y) {
+		int cx;
+		int cy;
+		switch (this.rotation) {
+			case 1 :
+				cx = x;
+				cy = y;
+
+			case 2 :
+				cx = -y;
+				cy = x;
+
+			case 3 :
+				cx = -x;
+				cy = -y;
+
+			case 4 :
+				cx = y;
+				cy = -x;
+		}
+		return this.carte.getCase(cx, cy);
+	}
+
+	public int getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+    
+    public int getAttractivite() {
+		return this.attractivite;
+	}
+
+	public void setAttractivite(int attractivite) {
+		this.attractivite = attractivite;
+	}
+
+    public int getValorisationEmplois() {
+		return this.valorisationEmplois;
+	}
+
+	public void setValorisationEmplois(int valorisationEmplois) {
+		this.valorisationEmplois = valorisationEmplois;
+	}
+
+	public int getNbEmployes() {
+		return this.nbEmployes;
+	}
+
+	public void setNbEmployes(int nbEmployes) {
+		this.nbEmployes = nbEmployes;
+	}
+
+	public int getRotation() {
+		return this.rotation;
+	}
+
+	public void setRotation(int rotation) {
+		this.rotation = rotation;
+	}		
+
+	public Case getCoin() {
+		return this.coin;
+	}
+
+	public void setCoin(Case coin) {
+		this.coin = coin;
+	}
+
+}

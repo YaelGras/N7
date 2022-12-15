@@ -1,0 +1,80 @@
+public abstract class Habitation implements Batiment {
+
+	private Case coin;
+	private int attractivite;
+	private int nbHabitants;
+	private int rotation;
+	private Carte carte;
+
+	public Habitation(Carte carte) {
+		this.carte = carte;
+		this.coin = carte.getCase(0, 0);
+		this.attractivite = 0;
+		this.nbHabitants = 0;
+		this.rotation = 1;
+	}
+
+	public Habitation(Carte carte, Case coin, int attractivite, int nbHabitants, int rotation) {
+		this.carte = carte;
+		this.coin = coin;
+		this.attractivite = attractivite;
+		this.nbHabitants = nbHabitants;
+		this.rotation = rotation;
+	}
+
+	private int[] getCaseCarte(int x, int y) {
+		int cx;
+		int cy;
+		switch (this.rotation) {
+			case 1 :
+				cx = x;
+				cy = y;
+
+			case 2 :
+				cx = -y;
+				cy = x;
+
+			case 3 :
+				cx = -x;
+				cy = -y;
+
+			case 4 :
+				cx = y;
+				cy = -x;
+		}
+		return this.carte.getCase(cx, cy);
+	}
+
+	public int getAttractivite() {
+		return this.attractivite;
+	}
+
+	public void setAttractivite(int attractivite) {
+		this.attractivite = attractivite;
+	}
+
+	public int getNbHabitants() {
+		return this.nbHabitants;
+	}
+
+	public void setNbHabitants(int nbHabitants) {
+		this.nbHabitants = nbHabitants;
+	}
+
+	public int getRotation() {
+		return this.rotation;
+	}
+
+	public void setRotation(int rotation) {
+		this.rotation = rotation;
+	}		
+
+	public Case getCoin() {
+		return this.coin;
+	}
+
+	public void setCoin(Case coin) {
+		this.coin = coin;
+	}
+
+}

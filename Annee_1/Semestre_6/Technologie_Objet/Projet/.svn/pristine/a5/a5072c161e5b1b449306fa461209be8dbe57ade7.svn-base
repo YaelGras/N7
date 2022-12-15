@@ -1,0 +1,11 @@
+package src.Routes;
+
+import src.Case;
+
+public class RouteTrottoir extends RouteGenerale {
+
+	RouteTrottoir(Case kase, Cardinal cardinal) {
+		super(kase, cardinal);
+	}
+
+}

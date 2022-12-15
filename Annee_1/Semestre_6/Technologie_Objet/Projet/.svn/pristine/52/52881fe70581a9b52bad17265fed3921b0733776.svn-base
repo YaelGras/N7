@@ -1,0 +1,20 @@
+package src;
+
+public class Commande_Parametre implements Commande {
+	/**
+	 * 
+	 */
+	private final MenuParametre menu = new MenuParametre();
+	
+	@Override
+	public void executer() {
+		// TODO Auto-generated method stub
+		// Afficher le menu enregistrer en paramètre
+	}
+
+	@Override
+	public String getNom() {
+		return "Paramètres";
+	}
+
+}

@@ -1,0 +1,40 @@
+package src.affichagePartie;
+
+import src.menus.boutons.*;
+
+import javax.swing.*;
+import java.awt.*;
+
+@SuppressWarnings("serial")
+public class Pause extends JPanel {
+    
+    private Bouton_Pause pauseButton;
+    private JLabel pauseIcon;
+
+    public Pause(Bouton_Pause pause) {
+        super();
+        this.setLayout(null);
+        this.setBackground(Color.WHITE);
+
+        this.pauseIcon = new JLabel(new ImageIcon("src/Images/Icones_Stats/pause.png"));
+        this.pauseButton = pause;
+
+        this.add(pauseIcon);
+        this.add(pauseButton);
+
+        this.setVisible(true);
+    }
+
+    public void updatePosition() {
+
+        pauseIcon.setBounds(0, 0, this.getWidth(),  this.getHeight());
+        pauseButton.setBounds(0, 0, this.getWidth(),  this.getHeight());
+
+        pauseIcon.setIcon(resizeSquareIcon((ImageIcon) pauseIcon.getIcon(), pauseIcon));
+    }
+
+    private ImageIcon resizeSquareIcon(ImageIcon icon, JLabel label) {
+        int taille = Math.min(label.getWidth(), label.getHeight()); 
+        return new ImageIcon(icon.getImage().getScaledInstance(taille, taille, Image.SCALE_DEFAULT));
+    }
+}

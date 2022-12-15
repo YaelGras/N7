@@ -1,0 +1,65 @@
+Date de l'évaluation : lun. 07 mars 2022 09:47:31 CET
+
+Nombre de similitudes (voir evaluations/evaluation1/sim_java.txt) : 1
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 16/8	(voir evaluations/evaluation1//checkstyle.log)
+
+Classe OperationInterditeException : NON DÉFINIE (ou pas sur SVN)
+
+Procuration sur le jeu réel : Non identifiée
+
+OperationInterditeException : JAMAIS LEVÉE
+OperationInterditeException : JAMAIS RECUPÉRÉE
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ok
+
+AssertionError ne doit pas être récupérée... ok
+
+Autres exceptions récupérées :
+  | allumettes/Arbitre.java:55:         } catch (CoupInvalideException e) {
+  | allumettes/Jouer.java:44:       } catch (ConfigurationException e) {
+  | allumettes/TricheurStrategie.java:11:           } catch (CoupInvalideException e) {
+  | allumettes/TricheurStrategie.java:18:       } catch (CoupInvalideException e) {
+  | allumettes/HumainStrategie.java:21:         } catch (NoSuchElementException e1) {
+
+Utilisation de 'Scanner' : ok
+  | allumettes/HumainStrategie.java:7:  private Scanner scanner;
+  | allumettes/HumainStrategie.java:10:     this.scanner = new Scanner(System.in);
+
+Utilisation de 'split' : ok mais un seul split devrait suffir !  Code à restructurer...
+  | allumettes/Jouer.java:27:                   infojoueur = args[i+1].split("@");
+  | allumettes/Jouer.java:29:                   infojoueur = args[i].split("@");
+
+Utilisation de 'Random' : ok
+  | allumettes/NaifStrategie.java:3:import java.util.Random;
+  | allumettes/NaifStrategie.java:6:    private Random rand;
+  | allumettes/NaifStrategie.java:9:        this.rand = new Random();
+
+Utilisation de '3' : ok
+
+Affichage de 'Impossible !' : ok
+
+Utilisation de 'System.exit' : ok
+
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+Test exemplePresqueSujet : NON CONFORME (voir evaluations/evaluation1/exemplePresqueSujet.diff)
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : NON CONFORME (voir evaluations/evaluation1/exempleConfiantTricheurSujet.diff)
+Test exempleRobustesse : NON CONFORME (voir evaluations/evaluation1/exempleRobustesse.diff)
+Test exempleHumainTricheurExpert : NON CONFORME (voir evaluations/evaluation1/exempleHumainTricheurExpert.diff)
+Test exempleMaxLou : NON CONFORME (voir evaluations/evaluation1/exempleMaxLou.diff)
+Test exempleRapideRapide : NON CONFORME (voir evaluations/evaluation1/exempleRapideRapide.diff)
+Test exempleTricheurExpert : ok
+
+Test RobustesseTest : OK (25 tests)	(voir evaluations/evaluation1/RobustesseTest.log)
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+
+Vérification du respect du diagramme de classe...
+	Non fait car le projet n'est pas assez avancé
+
+Aucune classe de test (fichier *Test.java ou Test*.java) !

@@ -1,0 +1,6 @@
+Début de la vérification...
+[ERROR] ExpertStrategie.java:22: Line has trailing spaces. [RegexpSingleline]
+[ERROR] StrategieAbstraite.java:18:17: Il manque une espace après 'if'. [WhitespaceAfter]
+[ERROR] StrategieAbstraite.java:19:21: Il manque une espace après 'if'. [WhitespaceAfter]
+[ERROR] StrategieAbstraite.java:33: Line has trailing spaces. [RegexpSingleline]
+Vérification terminée.

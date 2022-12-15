@@ -1,0 +1,41 @@
+package src;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+
+public class Carte {
+
+	private List<Case> listeCases;
+	private Map<Affichage> listeBatimentRoute;
+	private int hauteur;
+	private int largeur;
+
+	Carte(int largeur, int hauteur) {
+		this.largeur = largeur;
+		this.hauteur = hauteur;
+		this.listeCases = new ArrayList<Case>();
+		for (int i = 1; i <= largeur; i++) {
+			for (int j = 1; j <= hauteur; j++) {
+				this.listeCases.add(new Case(i,j));
+			}
+		}
+		this.listeBatimentRoute = new TreeMap<Case, Affichage>();
+	}
+
+	public void construire(Affichage Structure) {
+		
+	}
+
+	public void detruire() {
+		
+	}
+
+	public void selectionner() {
+		
+	}
+
+	public void deplacer() {
+		
+	}
+}

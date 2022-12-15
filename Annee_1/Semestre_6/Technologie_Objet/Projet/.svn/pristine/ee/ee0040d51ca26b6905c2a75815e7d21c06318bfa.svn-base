@@ -1,0 +1,50 @@
+package src.menus;
+
+
+import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+
+public class Commande_Retour extends JButton implements Commande, ActionListener {
+
+	private JFrame fenetre;
+	private Menu menu_avant, menu_courant;
+	
+	public Commande_Retour(JFrame fenetre, Menu menu_avant, Menu menu_courant) {
+		super();
+		this.fenetre = fenetre;
+		this.menu_avant = menu_avant;
+		this.menu_courant = menu_courant;
+		
+		//this.setText(this.getNom());
+		
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		
+		this.addActionListener(this);
+		
+		this.setVisible(true);
+	}
+	
+	
+	@Override
+	public void executer() {
+		this.menu_courant.effacer();
+		this.menu_avant.afficher();		
+	}
+
+	@Override
+	public String getNom() {
+		return "Retour";
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		this.executer();
+	}
+
+}

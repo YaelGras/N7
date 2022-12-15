@@ -1,0 +1,22 @@
+package allumettes;
+
+public class Arbitre {
+	private Joueur joueur1;
+	private Joueur joueur2;
+	private Boolean confiant;
+	
+	
+	Arbitre(Joueur j1, Joueur j2, boolean confident){
+		this.joueur1 = j1;
+		this.joueur2 = j2;
+		this.confiant = confident;
+	}
+	
+	Arbitre(Joueur j1, Joueur j2){
+		this(j1, j2, false);
+	}
+	
+	void arbitrer(Jeu jeu){
+		
+	}
+}

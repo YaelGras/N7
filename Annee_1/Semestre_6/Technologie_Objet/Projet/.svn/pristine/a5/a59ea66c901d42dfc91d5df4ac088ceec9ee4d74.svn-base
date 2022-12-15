@@ -1,0 +1,148 @@
+package src;
+
+public abstract class Batiment {
+
+	private Case coin;
+	private int rotation;
+	private Carte carte;
+	private Parcelle[] parcelles;
+	private int[] accesRoutes;
+	private int niveau;
+
+	public Batiment(Case coin, int rotation, Carte carte, 
+			Parcelle[] parcelles, int[] accesRoutes) {
+		this.coin = coin;
+		this.rotation = rotation;
+		this.carte = carte;
+		this.parcelles = parcelles;
+		this.accesRoutes = accesRoutes;
+	}
+
+	private int[] getCaseCarte(int x, int y) {
+		int cx;
+		int cy;
+		switch (this.rotation) {
+			case 1 :
+				cx = x;
+				cy = y;
+
+			case 2 :
+				cx = -y;
+				cy = x;
+
+			case 3 :
+				cx = -x;
+				cy = -y;
+
+			case 4 :
+				cx = y;
+				cy = -x;
+		}
+		return this.carte.getCase(this.coin.getX() + cx,
+				this.coin.getY() + cy);
+	}
+
+	public Case[] getAccesRoutes() {
+		int nbAcces = this.accesRoutes.length / 2;
+		Case[] ret = new Case[nbAcces];
+		for (int i = 0; i < nbAcces;  i++) {
+			ret[i] = getCaseCarte(this.accesRoutes[2 * i],
+					this.accesRoutes[2 * i + 1]);
+		}
+		return ret;
+	}
+
+	public Parcelle[] getParcelles() {
+		return this.parcelles;
+	}
+
+	public Case[] getCases() {
+		int nbCases = 0;
+		for (int i = 0; i < this.parcelles.length; i++) {
+			nbCases += this.parcelles[i].superficie();
+		}
+		Case[] cases = new Case[nbCases];
+		for (int i = 0; i < this.parcelles.length; i++) {
+			Case[] casesParcelle = this.parcelles[i].getCases();
+			for (int j = 0; j < casesParcelle.length; j++) {
+				cases [i + j] = casesParcelle[j];
+			}
+		}
+		return cases;
+	}
+
+	public int getRotation() {
+		return this.rotation;
+	}
+
+	public void setRotation(int rotation) {
+		this.rotation = rotation;
+	}		
+
+	public Case getCoin() {
+		return this.coin;
+	}
+
+	public void setCoin(Case coin) {
+		this.coin = coin;
+	}
+
+	public int getNiveau() {
+		return this.niveau;
+	}
+
+}
+
+// 3 niveau habitation
+
+// commerces :	alimentaire			(Alice)
+// 		mode						Les différents types de commerces seront créés à l'aide du constructeur 
+// 		santé						notament le nom et les paramètres liés aux emplois.
+// 		centre commercial
+// 		biens manufacturés
+// 		loisir (parc d'attraction, cinema, salle de sport, restaurant, karaoke, bowling, billard, laser game, bar à jeux, bar)
+
+// centre de soin :	clinique
+// 			hopital
+
+// Pole emploi ?
+
+/** Envoie des messages ex. "Il faut créer des commerces, bureaux etc ou améliorer les batiments commerciaux lorsque nbHabitant > nbEmployes" 
+et "Il faut créer des habitations ou améliorer les batiments de logement lorsque nbHabitant < nbEmployes" **/
+
+// Mairie	?						
+
+/** Mairie enregistre le nb de batiments dans la ville , nbHabitant et nbEmployes, et budget de la ville.
+La mairie gère les entrées et pertes d'argent. En effet, chaque bâtiment rapporte de l'argent en fonction du nb d'habitants 
+dans la ville. Habitation : rapporte plus ou moins d'argent en fonction du nb d'habitants par rapport au nb d'emplois,
+cad s'il y a plus d'habitants que d'emplois, le gain est inférieur (avec un certain coeff)
+que le gain lorsque nbHabitant <= nbEmployes 
+
+De plus, les commerces rapportent loyers + un certain montant qui varie : s'il n'y a pas assez d'habitants, ie nbHabitant < nbEmployes, 
+Les commerces perdent de l'argent (avec un certain coeff) **/
+
+
+// pompier :	2 niveaux
+// police :	police municipale
+// 		gendarmerie
+
+// energie :	
+
+// bureaux :	3 niveaux
+
+// industrie :	3 niveaux
+
+// ecoles :	primaire
+// 		collège / lycée
+// 		université
+// 		enseeiht
+
+// Banques :
+// Parc :	
+// Décharges
+
+// Parking : voiture/velo
+
+// tourisme :	hotel
+// 		musées
+// 		eglise

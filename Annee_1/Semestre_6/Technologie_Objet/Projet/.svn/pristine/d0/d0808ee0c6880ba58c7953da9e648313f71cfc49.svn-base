@@ -1,0 +1,20 @@
+package src;
+import src.affichagePartie.*;
+public class Finances {
+	
+	int compteVille;
+	
+	Finances(int compte){
+		this.compteVille = compte;
+	}
+	
+	public void depenser(int argent) {
+		compteVille -= argent;
+		statFinances.updateArgent(this.compteVille);
+	}
+	
+	public void collecter() {
+		
+		statFinances.updateArgent(this.compteVille);
+	}
+}

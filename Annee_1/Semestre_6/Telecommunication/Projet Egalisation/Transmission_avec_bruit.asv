@@ -1,0 +1,111 @@
+clear all;
+close all;
+clc
+
+
+
+%Fréquence d'échantillonnage
+Fe = 24000;
+% Débit binaire désiré
+Rb = 3000;
+%Coefficient d'atténuation du signal direct
+alpha_0 = 1;
+%Coefficient d'atténuation du signal réfléchi
+alpha_1 = 0.5;
+
+% Transmission d'une chaine aléatoire
+nb_bits = 100000;
+%bits à transmettre
+bits = randi([0,1], 1, nb_bits);
+transmission_avec_bruit(Fe, Rb, alpha_0, alpha_1, bits, true);
+
+transmission_avec_bruit(Fe, Rb, alpha_0, alpha_1, bits, false);
+
+
+
+
+function [] = transmission_avec_bruit(Fe, Rb, alpha0, alpha1, bits, canal)
+        %Période signal        
+        Ts = 1/Rb;
+        %facteur de suréchantillonage
+        Ns = Ts * Fe;        
+        %Nombre de bits à transmettre
+        nb_bits = length(bits);
+        %Suréchantillonnage
+        bitsmap = kron(bits * 2 - 1, [1 zeros(1, Ns - 1)]); 
+        %Réponse impulsionnelle du filtre de mise en forme
+        he = ones(1, Ns); % Le filtre est un filtre rectangulaire de hauteur 1
+        %Réponse impulsionnelle du filtre de réception
+        hr = he;
+        %Filtrage de mise en forme
+        x = filter(he,1,bitsmap);
+        
+        if canal
+            %Réponse impulsionnelle du filtre du canal de propagation
+            hc = kron([alpha0 alpha1], [1 zeros(1, Ns-1)]);
+            %Passage par le canal de transmission
+            xe = filter(hc, 1, x);
+            figure("Name", "Constellation avec filtrage canal", "NumberTitle","off")
+        else 
+            xe = x;
+            figure("Name", "Constellation sans filtrage canal", "NumberTitle","off")
+        end
+                
+        %ajout du bruit
+        %Puissance de l'enveloppe complexe
+        P_x = mean(abs(xe).^2);
+        %Rapport sign
+        Eb_N0 = power(10, (0:1:10)/10)';
+        x_sans_bruit = repmat(xe, 11, 1);
+        bruit = sqrt((P_x*Ns)./(2*log2(2)* Eb_N0)) .* randn(1, length(xe)) ;
+        signal_bruite = x_sans_bruit + bruit;
+
+        
+        
+        % Démodulation 
+        
+        
+        TEB = zeros(1, 11);
+        
+        % On calcule le TEB pour chaque valeur de bruit
+        for i=1:11
+        
+            ye = filter(hr,1,signal_bruite(i,:));
+            
+            % Recupération des bits avec n0 = Ns
+            ech = Ns : Ns: length(ye);
+            xech = ye(ech);
+            bits_recu = xech;
+            bits_recu(xech > 0) = 1;
+            bits_recu(xech < 0) = 0;
+      
+            
+            TEB(i) = sum(bits_recu ~= bits)/nb_bits;
+            
+            %constellation
+            subplot(4,4, i)
+            const = plot(real(xech), imag(xech), '+');
+            const.LineStyle = 'none';
+            xlim([-3.5 3.5])
+            ylim([-3.5 3.5])
+            title(i-1 + "dB")
+            
+        end
+        subplot(4,4, [13 : 16])
+        semilogy((0:1:10), TEB)
+        hold on
+        if canal
+            semilogy((0:1:10),(2 - normcdf(sqrt(18*Eb_N0/5), 0, 1) - normcdf(sqrt(2*Eb_N0/5), 0, 1))/2)
+        else
+            semilogy((0:1:10), 1-normcdf(sqrt(2*Eb_N0), 0, 1))
+        end
+        legend("TEB expérimental", "TEB théorique")
+
+        if canal 
+            figure
+            semilogy((0:1:10),(2 - normcdf(sqrt(18*Eb_N0/5), 0, 1) - normcdf(sqrt(2*Eb_N0/5), 0, 1))/2)
+            hold on;
+            semilogy((0:1:10), 1-normcdf(sqrt(2*Eb_N0), 0, 1))
+            legend("TEB avec canal de propagation", "TEB théorique sans canal de propagation");
+        end
+end

@@ -1,0 +1,184 @@
+package src.affichagePartie;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+import src.affichagePartie.affichageChoixAction.CaseSelectionnables;
+
+@SuppressWarnings("serial")
+public class BandeAction extends JPanel implements MouseListener {
+    private JFrame fenetre;
+    //On a 8 type de batiments, un bouton route et un bouton detruire puis il y aura 
+    // les differentes variante sur les cases qui suivent (5 variantes maximales)
+    private final static int nbBoutons = 15;
+    private CaseSelectionnables[] caseSelectionnables  = new CaseSelectionnables[nbBoutons];
+    private static Icon[] iconBatiment = new Icon[10];
+    private static Icon[] iconNiveau = new Icon[5];
+    private static Icon[] iconRoutes = new Icon[5];
+    private int selected = -1; //type de batiment selectionné
+    private int optionSelected = -1; //Cases optionnelles selectionné (de 10 à 14)
+    
+    static {
+        iconBatiment[0] = new ImageIcon("src/Images/Batiment_PetitVide/img_Habitation.png", "Habitation");
+        iconBatiment[1] = new ImageIcon("src/Images/Batiment_PetitVide/img_Commerce.png", "Commerce");
+        iconBatiment[2] = new ImageIcon("src/Images/Batiment_PetitVide/img_Industrie.png", "Industrie");
+        iconBatiment[3] = new ImageIcon("src/Images/Batiment_PetitVide/img_Usine.png", "Usine");
+        iconBatiment[4] = new ImageIcon("src/Images/Batiment_PetitVide/img_Pompier.png", "Pompier");
+        iconBatiment[5] = new ImageIcon("src/Images/Batiment_PetitVide/img_PoleEmploi.png", "Pôle-Emploi");
+        iconBatiment[6] = new ImageIcon("src/Images/Batiment_PetitVide/img_Mairie.png", "Mairie");
+        iconBatiment[7] = new ImageIcon("src/Images/Batiment_PetitVide/img_Hopital.png", "Hôpital");
+        iconBatiment[8] = new ImageIcon("src/Images/Batiment_PetitVide/Route_trottoir2.png", "Routes");
+        iconBatiment[9] = new ImageIcon("src/Images/Batiment_PetitVide/bombe.png", "Detruire");
+
+        for(int i = 0; i < 5; i++) {
+            iconRoutes[i] = new ImageIcon("src/Images/Batiment_PetitVide/Route_trottoir"+ (i+1) +".png", "Routes");
+        }  
+    }
+    public BandeAction(JFrame fenetre) {
+        super();
+        this.fenetre = fenetre;
+        this.setLayout(new GridLayout(1, nbBoutons));
+
+        for (int i = 0; i < 10; i ++) {
+            caseSelectionnables[i] = new CaseSelectionnables();
+            caseSelectionnables[i].setLabelIcon(iconBatiment[i]);
+            caseSelectionnables[i].setTextArea(iconBatiment[i].toString());
+            caseSelectionnables[i].addMouseListener(this);
+
+            this.add(this.caseSelectionnables[i]);
+        }
+        
+        for (int i = 10; i < nbBoutons; i ++) {
+            caseSelectionnables[i] = new CaseSelectionnables();
+            caseSelectionnables[i].addMouseListener(this);
+
+            this.add(this.caseSelectionnables[i]);
+        }
+
+        this.fenetre.getContentPane().add(this);
+
+		this.setVisible(true);
+    }
+
+    public void updatePosition() {
+        if(this.getHeight() != 0 && this.getWidth() != 0) {
+            for(int i = 0; i < nbBoutons; i++) {
+                this.caseSelectionnables[i].updatePosition();
+            }
+        } else if (this.getHeight() == 0) {
+            System.out.println("Hauteur de Bande action nulle");
+        } else {
+            System.out.println("Largeur de Bande Action nulle");
+        }
+        
+    }
+
+    public void effacerBoutonsOptions() {
+        for(int i = 10; i < nbBoutons; i++) {
+            caseSelectionnables[i].setVisible(false);
+        }       
+    }
+
+    public void afficherNiveau(String typeBatiment, int nbDeNiveau){
+        for(int i = 0; i < Math.min(5, nbDeNiveau); i++) {
+            this.caseSelectionnables[i + 10].setVisible(true);
+            this.caseSelectionnables[i + 10].setTextArea(typeBatiment + "\n Niveau " + (i));
+            this.caseSelectionnables[i + 10].setLabelIcon(null);
+        }
+    }
+
+    public void afficherRoutes(){
+        for(int i = 0; i < 5; i++) {
+            this.caseSelectionnables[i + 10].setVisible(true);
+            this.caseSelectionnables[i + 10].setTextArea("Route " + (i));
+            this.caseSelectionnables[i + 10].setLabelIcon(iconRoutes[i]);
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int deselection = this.selected;
+        int deselectionOption = this.optionSelected;
+
+
+       
+        for(int i = 0; i < nbBoutons; i++) {
+            if (e.getSource() == this.caseSelectionnables[i]) {
+                this.caseSelectionnables[i].setBackground(Color.LIGHT_GRAY);
+                this.caseSelectionnables[i].setOpaque(true);
+                // On regarde si on click sur une option ou un type de batiment
+                if(i < 10) {
+
+                    this.selected = i;
+                    effacerBoutonsOptions();
+                    
+                    //Batiment avec niveau
+                    if (i < 8) {
+                        this.afficherNiveau(iconBatiment[i].toString(), 3);
+                    }
+                    
+                    //Routes
+                    if (i == 8) {
+                        this.afficherRoutes();                        
+                    }
+
+                    if (i == 9) {
+                        SelectionAction.setDetruire(true);
+                    } else {
+                        SelectionAction.setDetruire(false);
+                        SelectionAction.setNomBatiment(iconBatiment[i].toString());
+                        SelectionAction.setNiveau(-1);
+                    }
+
+
+                } else {
+                    SelectionAction.setNiveau(i - 9);
+                    this.optionSelected = i;
+                }                   
+            }
+        }             
+
+        if(this.selected != deselection && deselection != -1) {
+            this.caseSelectionnables[deselection].setBackground(Color.WHITE);
+            this.caseSelectionnables[deselection].setOpaque(false);
+
+            if(this.optionSelected != -1) {
+                this.caseSelectionnables[this.optionSelected].setBackground(Color.WHITE);
+                this.caseSelectionnables[this.optionSelected].setOpaque(false);
+                this.optionSelected = -1;
+            }
+        } else if (this.optionSelected != deselectionOption && deselectionOption != -1) {
+            this.caseSelectionnables[deselectionOption].setBackground(Color.WHITE);
+            this.caseSelectionnables[deselectionOption].setOpaque(false);
+        }
+    }
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+
+}

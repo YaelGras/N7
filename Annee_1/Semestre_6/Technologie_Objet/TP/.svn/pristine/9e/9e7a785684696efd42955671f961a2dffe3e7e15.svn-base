@@ -1,0 +1,67 @@
+Date de l'évaluation : mer. 09 mars 2022 11:54:19 CET
+
+Nombre de similitudes (voir evaluations/evaluation1/sim_java.txt) : 2
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 18/9	(voir evaluations/evaluation1//checkstyle.log)
+
+Classe OperationInterditeException : OperationInterditeException (ok)
+
+Procuration sur le jeu réel : allumettes/Procuration.java (ok)
+
+OperationInterditeException, levée dans : allumettes/Procuration.java (ok)
+OperationInterditeException, récupérée dans : allumettes/Arbitre.java (ok)
+
+Throwable, Exception et RuntimeException ne devraient pas être récupérées car trop générales... ok
+
+AssertionError ne doit pas être récupérée... ok
+
+Autres exceptions récupérées :
+  | allumettes/Arbitre.java:61:             } catch (CoupInvalideException e) {
+  | allumettes/Jouer.java:48:       } catch (ConfigurationException e) {
+  | allumettes/TricheurStrategie.java:11:           } catch (CoupInvalideException e) {
+  | allumettes/TricheurStrategie.java:18:       } catch (CoupInvalideException e) {
+  | allumettes/HumainStrategie.java:27:         } catch (NumberFormatException|NoSuchElementException e ) {
+  | allumettes/HumainStrategie.java:41:     } catch (CoupInvalideException e) {
+
+Utilisation de 'Scanner' : ok
+  | allumettes/HumainStrategie.java:8:  private Scanner scanner;
+  | allumettes/HumainStrategie.java:12:     this.scanner = new Scanner(System.in);
+  | allumettes/HumainStrategie.java:21:         scanner = new Scanner(System.in);
+
+Utilisation de 'split' : ok
+  | allumettes/Jouer.java:32:               infojoueur = arg.split("@");
+
+Utilisation de 'Random' : ok
+  | allumettes/NaifStrategie.java:3:import java.util.Random;
+  | allumettes/NaifStrategie.java:6:    private Random rand;
+  | allumettes/NaifStrategie.java:9:        this.rand = new Random();
+
+Utilisation de '3' : Ne pas utiliser de constante littérale hors -1, 0 ou 1 (peut-être PRISE_MAX ?)
+  |     allumettes/ExpertStrategie.java:8:      return (prise > 0 && prise <= jeu.PRISE_MAX) ? prise : 3;
+
+Affichage de 'Impossible !' : ok
+
+Utilisation de 'System.exit' : ok
+
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+Test exemplePresqueSujet : NON CONFORME (voir evaluations/evaluation1/exemplePresqueSujet.diff)
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : ok
+Test exempleRobustesse : NON CONFORME (voir evaluations/evaluation1/exempleRobustesse.diff)
+Test exempleHumainTricheurExpert : NON CONFORME (voir evaluations/evaluation1/exempleHumainTricheurExpert.diff)
+Test exempleMaxLou : NON CONFORME (voir evaluations/evaluation1/exempleMaxLou.diff)
+Test exempleRapideRapide : ok
+Test exempleTricheurExpert : ok
+
+Test RobustesseTest : OK (25 tests)	(voir evaluations/evaluation1/RobustesseTest.log)
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Compilation de Jouer.java : OK.
+Compilation de Arbitre.java : OK.
+
+Vérification du respect du diagramme de classe...
+Test FormeTest : OK (2 tests)	(voir evaluations/evaluation1/FormeTest.log)
+
+Aucune classe de test (fichier *Test.java ou Test*.java) !

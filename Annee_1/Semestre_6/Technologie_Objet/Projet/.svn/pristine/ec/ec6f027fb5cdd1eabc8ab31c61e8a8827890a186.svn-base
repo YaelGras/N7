@@ -1,0 +1,13 @@
+package src.routes;
+
+import src.carte.Case;
+
+public class RouteTrottoir extends RouteGenerale {
+
+	private static final long serialVersionUID = 4166868520767458811L;
+
+	RouteTrottoir(Case kase, Cardinal cardinal) {
+		super(kase, cardinal);
+	}
+
+}

@@ -1,0 +1,56 @@
+package src.menus;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Commande_Jouer extends JButton implements Commande {
+
+	private JFrame fenetre;
+	private MenuPrincipal menu;
+	private MenuLancement menu_lanc;
+	
+	public Commande_Jouer(JFrame fenetre, MenuPrincipal menu) {
+		super();
+		this.fenetre = fenetre;
+		this.menu = menu;
+		this.menu_lanc = new MenuLancement(this.fenetre, this.menu);
+		//this.setText(this.getNom());
+		//this.setFont(new Font("Arial", Font.BOLD, 30));
+		//this.setForeground(Color.BLACK);
+		
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		
+		this.addActionListener(new actionJouer(this));
+		
+	}
+	
+	@Override
+	public void executer() {
+		this.menu.effacer();
+		this.menu_lanc.afficher();
+	}
+
+	@Override
+	public String getNom() {
+		return "Jouer";
+	}
+
+	static class actionJouer implements ActionListener {
+		private Commande_Jouer modele;
+		
+		public actionJouer(Commande_Jouer bouton) {
+			this.modele = bouton;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			this.modele.executer();
+		}
+		
+	}
+
+	
+	
+
+}

@@ -1,0 +1,55 @@
+package src;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class Commande_Parametre extends JButton implements Commande {
+	/**
+	 * 
+	 */
+	private MenuParametre menu_param;
+	private JFrame fenetre;
+	private MenuPrincipal menu_princ;
+	
+	public Commande_Parametre(JFrame fenetre, MenuPrincipal menup) {
+		super();
+		this.fenetre = fenetre;
+		this.menu_princ = menup;
+		this.menu_param = new MenuParametre(this.fenetre);
+		this.fenetre.add(this.menu_param);
+		this.setText(this.getNom());
+		this.setOpaque(false);
+		this.setContentAreaFilled(false);
+		
+		this.addActionListener(new actionParam(this));
+	}
+	
+	@Override
+	public void executer() {
+		this.menu_princ.effacer();
+		this.menu_param.afficher();
+	}
+
+	@Override
+	public String getNom() {
+		return "Paramètres";
+	}
+	
+	static class actionParam implements ActionListener {
+		private Commande_Parametre modele;
+		
+		public actionParam(Commande_Parametre bouton) {
+			this.modele = bouton;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			this.modele.executer();
+		}
+		
+	}
+
+}

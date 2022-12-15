@@ -1,0 +1,65 @@
+package src.affichagePartie;
+
+public class SelectionAction {
+    /**
+     * Cette classe permets de comuniquer le choix de l'utilisateur
+     * entre les outils graphique et la partie courante enregistrée, 
+     * ainsi tout est en statique car c'est juste un fichier qui 
+     * permets de transmettre des infos. Cela evite de transporter 
+     * des instance d'un objet à travers de multiples classes qui 
+     * ne s'en servent pas.
+     */
+
+    private static boolean detruire = false;
+    private static String nomBatiment;
+    private static int niveau;
+
+
+    public static void setChoixCompletBatiment(String nom, int level) {
+        detruire = false;
+        nomBatiment = nom;
+        niveau = level;
+    }
+
+    public static void setDetruire(Boolean choix) {
+        detruire = choix;
+        System.out.println("Modification detruire : " + choix);    
+    }
+
+    public static Boolean getDestruire() {
+        return detruire;
+    } 
+
+    public static void setNomBatiment(String choix) {
+        nomBatiment = choix;
+        System.out.println("Modification nom batiment : " + choix);
+    }
+
+    public static String getNomBatiment() throws ActionException {
+        if(!detruire) {
+            return nomBatiment;
+        } else {
+            throw new ActionException("On ne peut récupérer le nom"
+                + "d'un batiment à poser si l'on souhaite détruire quelque chose");
+        }
+    }
+
+    public static void setNiveau(int choix) {
+        niveau = choix;
+        System.out.println("Modification niveau : " + choix);
+    }
+
+    public static int getNiveau() throws ActionException {
+        if (niveau == -1) {
+            throw new ActionException("Le niveau n'a pas été défini");
+        }
+
+        if(detruire) {
+            throw new ActionException("On ne peut récupérer le niveau"
+                + "d'un batiment à poser si l'on souhaite détruire quelque chose");
+        }
+        
+        return niveau;
+    }
+
+}

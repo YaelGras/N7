@@ -1,0 +1,24 @@
+clc;
+clear all;
+
+load tp3_1.mat;
+TEB_the_1 = TEB_the;
+TEB_1 = TEB;
+
+load tp3_2.mat;
+TEB_the_2 = TEB_the;
+TEB_3 = TEB;
+
+load tp3_3.mat;
+TEB_the_3 = TEB_the;
+TEB_3 = TEB;
+
+figure("Name", "Comparaison des TEB théorique")
+semilogy(0:1:8, TEB_the_1, 'red');
+hold on
+grid on
+semilogy(0:1:8, TEB_the, "black")
+semilogy(0:1:8, TEB_the, "black")
+xlabel("Rapport signal sur bruit en dB")
+ylabel("TEB théorique")
+legend('TEB 1', 'TEB 2', 'TEB 3')

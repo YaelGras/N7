@@ -1,0 +1,87 @@
+2,28c2,59
+< Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+< Impossible ! Nombre invalide : 5 Coup invalide car (> 3) : 5
+< Impossible ! Nombre invalide : 0 Coup invalide car (< 1) : 0
+< Impossible ! Nombre invalide : -1 Coup invalide car (< 1) : -1
+< Xavier prend 3 allumette.
+< 
+< Xavier prend 3 allumette.
+< 
+< Xavier prend 1 allumette.
+< 
+< Impossible ! Nombre invalide : 4 Coup invalide car (> 3) : 4
+< Xavier prend 3 allumette.
+< 
+< Xavier prend 2 allumette.
+< 
+< Impossible ! Nombre invalide : 0 Coup invalide car (< 1) : 0
+< Impossible ! Nombre invalide : -1 Coup invalide car (< 1) : -1
+< Xavier prend 1 allumette.
+< 
+< Exception in thread "main" java.util.NoSuchElementException: No line found
+< 	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+< 	at allumette.HumainStrategie.getPrise(HumainStrategie.java:20)
+< 	at allumette.Joueur.getPrise(Joueur.java:18)
+< 	at allumette.Arbitre.priseJoueur(Arbitre.java:57)
+< 	at allumette.Arbitre.tourJoueur(Arbitre.java:38)
+< 	at allumette.Arbitre.arbitrer(Arbitre.java:24)
+< 	at allumette.Jouer.main(Jouer.java:44)
+---
+> Xavier, combien d'allumette ? Xavier prend 4 allumette.
+> Impossible ! Nombre invalide : 4 (> 3)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 5 allumette.
+> Impossible ! Nombre invalide : 5 (> 3)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 0 allumette.
+> Impossible ! Nombre invalide : 0 (< 1)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend -1 allumette.
+> Impossible ! Nombre invalide : -1 (< 1)
+> 
+> Allumettes restantes : 13
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+> 
+> Allumettes restantes : 10
+> Ordinateur prend 1 allumette.
+> 
+> Allumettes restantes : 9
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+> 
+> Allumettes restantes : 6
+> Ordinateur prend 1 allumette.
+> 
+> Allumettes restantes : 5
+> Xavier, combien d'allumette ? Xavier prend 1 allumette.
+> 
+> Allumettes restantes : 4
+> Ordinateur prend 3 allumette.
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 4 allumette.
+> Impossible ! Nombre invalide : 4 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 3 allumette.
+> Impossible ! Nombre invalide : 3 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 2 allumette.
+> Impossible ! Nombre invalide : 2 (> 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 0 allumette.
+> Impossible ! Nombre invalide : 0 (< 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend -1 allumette.
+> Impossible ! Nombre invalide : -1 (< 1)
+> 
+> Allumettes restantes : 1
+> Xavier, combien d'allumette ? Xavier prend 1 allumette.
+> 
+> Xavier perd !
+> Ordinateur gagne !

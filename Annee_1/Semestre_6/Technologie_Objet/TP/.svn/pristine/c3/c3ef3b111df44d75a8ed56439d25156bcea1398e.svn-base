@@ -1,0 +1,107 @@
+File allumettes/Arbitre.java: 485 tokens, 99 lines
+File allumettes/CoupInvalideException.java: 68 tokens, 39 lines
+File allumettes/Joueur.java: 71 tokens, 43 lines
+File allumettes/OperationInterditeException.java: 9 tokens, 5 lines
+File allumettes/ExpertStrategie.java: 97 tokens, 25 lines
+File allumettes/ConfigurationException.java: 21 tokens, 16 lines
+File allumettes/Jouer.java: 431 tokens, 104 lines
+File allumettes/Jeu.java: 23 tokens, 21 lines
+File allumettes/JeuAllumettes.java: 120 tokens, 31 lines
+File allumettes/NaifStrategie.java: 70 tokens, 26 lines
+File allumettes/RapideStrategie.java: 67 tokens, 23 lines
+File allumettes/TricheurStrategie.java: 151 tokens, 33 lines
+File allumettes/Procuration.java: 60 tokens, 20 lines
+File allumettes/StrategieAbstraite.java: 144 tokens, 38 lines
+File allumettes/Strategie.java: 12 tokens, 8 lines
+File allumettes/HumainStrategie.java: 223 tokens, 56 lines
+Total input: 16 files (16 new, 0 old), 2052 tokens
+
+allumettes/TricheurStrategie.java: line 17-21 [31]
+allumettes/HumainStrategie.java: line 39-44
+< 			jeu.retirer(jeu.getNombreAllumettes() - 2);
+< 		} catch (CoupInvalideException e) {
+< 			System.err.println("tricheur : " + e.getMessage());
+< 		}
+< 		System.out.println("[Allumettes restantes : " + jeu.getNombreAllumettes() + "]");
+---
+> 			jeu.retirer(1);
+> 		} catch (CoupInvalideException e) {
+> 			System.err.println("Erreur humain tricheur : " + e.getMessage());
+> 		}
+> 
+> 		System.out.print("[Une allumette en moins, plus que ");
+
+allumettes/Arbitre.java: line 60-62 [28]
+allumettes/Arbitre.java: line 67-69
+< 				} catch (CoupInvalideException e) {
+< 					System.out.print("Impossible ! Nombre invalide : " + e.getCoup());
+< 					System.out.println(" " + e.getProbleme());
+---
+> 		} catch (OperationInterditeException e) {
+> 			System.out.print("Abandon de la partie car " + joueur.getNom());
+> 			System.out.println(" triche !");
+
+allumettes/Arbitre.java: line 5-11 [25]
+allumettes/Joueur.java: line 7-19
+< 	private Joueur joueur2;
+< 	private Boolean confiant;
+< 
+< 
+< 	public Arbitre(Joueur j1, Joueur j2) {
+< 		this.joueur1 = j1;
+< 		this.joueur2 = j2;
+---
+> 	private String nom;
+> 
+> 	/** Strategie du joueur.
+> 	 */
+> 	private StrategieAbstraite strategie;
+> 
+> 	/** Construire un joueur.
+> 	 * @param name
+> 	 * @param strategy
+> 	 */
+> 	public Joueur(String name, StrategieAbstraite strategy) {
+> 		this.nom = name;
+> 		this.strategie = strategy;
+
+allumettes/TricheurStrategie.java: line 10-13 [24]
+allumettes/TricheurStrategie.java: line 17-20
+< 				jeu.retirer(jeu.PRISE_MAX);
+< 			} catch (CoupInvalideException e) {
+< 				System.err.println("tricheur : " + e.getMessage());
+< 			}
+---
+> 			jeu.retirer(jeu.getNombreAllumettes() - 2);
+> 		} catch (CoupInvalideException e) {
+> 			System.err.println("tricheur : " + e.getMessage());
+> 		}
+
+allumettes/RapideStrategie.java: line 12-23 [24]
+allumettes/TricheurStrategie.java: line 22-33
+< 		return prise;
+< 	}
+< 
+< 	public String toString() {
+< 		return "rapide";
+< 	}
+< 
+< 	@Override
+< 	public String getNom() {
+< 		return "";
+< 	}
+< }
+---
+> 		return 1;
+> 	}
+> 
+> 	public String toString() {
+> 		return "tricheur";
+> 	}
+> 	
+> 	@Override
+> 	public String getNom() {
+> 		return "";
+> 	}
+> }
+

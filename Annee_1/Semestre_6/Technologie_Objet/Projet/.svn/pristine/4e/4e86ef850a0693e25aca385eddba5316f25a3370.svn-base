@@ -1,0 +1,49 @@
+package src;
+
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
+
+import src.carte.Case;
+
+public abstract class Structure {
+
+	private Image image;
+	private Case[] listeCasesOccupees;
+	private String nomStructure;
+	
+	public static final int longueurCase = 52; 
+	
+	public Structure() {
+		setNomStructure();
+		String chemin = "src/Images/img_" + nomStructure + ".png";
+		ImageIcon icon = new ImageIcon(chemin);
+		setImage(icon);
+	}
+
+	public void afficher(Graphics g, int xFond, int yFond) {
+		Case coin = this.getCoin();
+		g.drawImage(this.image, xFond + coin.getX()*longueurCase, yFond + coin.getY()*longueurCase, null);
+	}
+
+	public void setImage(ImageIcon icon) {
+		this.image = icon.getImage();
+	}
+
+	// getters
+	
+	public Image getImage() {
+		return this.image;
+	}
+
+	public void setNomStructure() {
+		this.nomStructure = this.getClass().getSimpleName();
+	}
+
+	public abstract Case[] getCases();
+
+	public abstract Case getCoin();
+
+	public abstract void setCoin(Case coin);
+	
+}

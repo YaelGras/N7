@@ -1,0 +1,24 @@
+package allumettes;
+
+public class Joueur {
+
+	private String nom;
+	private Strategie strategie;
+
+	Joueur(String name, Strategie strategy) {
+		this.nom = name;
+		this.strategie = strategy;
+	}
+
+	public String getNom() {
+		return this.nom;
+	}
+
+	public int getPrise(Jeu jeu) {
+		return strategie.getPrise(jeu);
+	}
+	
+	Strategie getStrategie() {
+		return this.strategie;
+	}
+}

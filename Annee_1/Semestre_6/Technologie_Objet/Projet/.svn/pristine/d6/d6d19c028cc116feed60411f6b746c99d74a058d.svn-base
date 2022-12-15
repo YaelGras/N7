@@ -1,0 +1,66 @@
+package src;
+
+import javax.imageio.*;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.text.AttributedCharacterIterator;
+import java.io.*;
+import java.util.*; 
+import java.awt.Graphics;
+
+
+
+
+public class MenuPrincipal extends JPanel {
+	
+	private JFrame fenetre;	
+	private Commande_Jouer jouer;
+	private Commande_Parametre parametre;
+	private Commande_Quitter quitter;
+	
+	
+	public MenuPrincipal(JFrame fenetre) {
+		super();
+		this.fenetre = fenetre;
+		this.setSize(1280, 960);
+		
+		this.jouer = new Commande_Jouer(this.fenetre, this);
+		this.quitter = new Commande_Quitter(this.fenetre);
+		this.parametre = new Commande_Parametre(this.fenetre, this);
+		
+		
+		this.setLayout(new GridLayout(3, 1));
+		
+		this.add(this.jouer);
+		this.add(this.parametre);
+		this.add(this.quitter);
+		
+		this.afficher();
+		
+	}
+	
+	public void afficher() {
+		this.setVisible(true);
+	}
+	
+	public void effacer() {
+		this.setVisible(false);
+	}
+	
+	public void paintComponent(Graphics g)
+    {
+        //Chargement de l"image de fond
+        try {
+        	super.paintComponent(g);
+            Image img = ImageIO.read(new File("fond_menu_principal.jpg"));
+            g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur image de fond: " +e.getMessage());
+        }
+    }
+}

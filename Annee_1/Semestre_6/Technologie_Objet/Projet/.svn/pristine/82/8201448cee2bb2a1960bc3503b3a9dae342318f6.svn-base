@@ -1,0 +1,68 @@
+package src.menus;
+
+import javax.imageio.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import src.Image;
+
+
+public class MenuPrincipal extends Menu {
+	
+	private JFrame fenetre;	
+	private Commande_Jouer jouer;
+	private Commande_Parametre parametre;
+	private Commande_Quitter quitter;
+	
+	
+	public MenuPrincipal(JFrame fenetre) {
+		super();
+		this.fenetre = fenetre;
+		this.setBounds(0, 0, this.fenetre.getWidth(), this.fenetre.getHeight()); 
+		this.setLayout(null);
+		
+		this.jouer = new Commande_Jouer(this.fenetre, this);
+		this.quitter = new Commande_Quitter(this.fenetre);
+		this.parametre = new Commande_Parametre(this.fenetre, this);
+		
+		
+				
+		this.add(this.jouer);
+		this.add(this.parametre);
+		this.add(this.quitter);
+		
+		
+		
+		this.fenetre.getContentPane().add(this);
+		this.fenetre.addComponentListener((ComponentListener) this);
+		this.afficher();
+		
+	}
+	
+	public void paintComponent(Graphics g)
+    {
+        //Chargement de l"image de fond
+        try {
+        	super.paintComponent(g);
+            Image img = ImageIO.read(new File("src/Images/Fond_Menu_Principal.png"));
+            g.drawImage(img, 0, 0, this.fenetre.getWidth(), this.fenetre.getHeight(), this.fenetre);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur image de fond: " + e.getMessage());
+        }
+    }
+	
+	@Override
+	public void componentResized(ComponentEvent e) {
+		
+		this.setBounds(0, 0, this.fenetre.getWidth(), this.fenetre.getHeight()); 
+		
+		int largeur = this.getWidth()/2;
+		int hauteur = 2*this.getHeight()/13;
+		
+		this.jouer.setBounds(this.getWidth()/4, 2*this.getHeight()/11, largeur, hauteur);
+		this.parametre.setBounds(this.getWidth()/4, 3*this.getHeight()/7, largeur, hauteur);
+		this.quitter.setBounds(this.getWidth()/4, 5*this.getHeight()/7, largeur, hauteur);
+    }	
+}

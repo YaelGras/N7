@@ -1,0 +1,16 @@
+Les Q# font référence aux questions posées dans le fichier LISEZ-MOI.txt.
+Les pénalités '+' sont évaluées manuellement (enseignant de TP).
+Les pénalités '+' peuvent donner lieu à des pénalités définitives en V1 (si le travail est jugé insuffisant).
+
+
++ L3 : Fichier LISEZ-MOI.txt
+    + Question 1 : ok
+    + Question 2 : ok
+    + Question 3 : ok
+
++ Seule remarque :
+    - Ta solution fonctionne mais la classe abstraite StrategieAbstraite n'est pas absolument nécessaire. Elle oblige en revanche toutes les stratégies à en hériter, donc ne leur laisse plus la possibilité d'hériter d'autre chose. C'est sans doute la seule raison pour laquelle ce n'est pas optimale.
+Mais pas besoin de changer, c'est bon comme ça.
+
++ Correction sur les pénalités automatiques : 0
+

@@ -1,0 +1,20 @@
+package src;
+
+public interface Commande {
+	/**
+	 * Une commande comprends une méthode executer 
+	 * pour qu'un menu puisse l'executer si
+	 * elle est sélectionnée par l'utilisateur.
+	 * 
+	 * L'affichage des différentes commandes est 
+	 * géré directement par le menu qui utilise la 
+	 * commande
+	 */
+	public void executer();
+	
+	/**
+	 * Obtenir le nom de la commande
+	 * @return nom
+	 */
+	public String getNom();
+}

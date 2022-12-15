@@ -1,0 +1,57 @@
+package src.affichagePartie.affichageChoixAction;
+
+import src.affichagePartie.*;
+import javax.swing.*;
+import java.awt.*;
+
+public class CaseSelectionnables extends JPanel {
+
+    private ImageIcon iconInitiale;
+    private JLabel icon;
+    private ResizeFontLabel nom;
+
+    public CaseSelectionnables() {
+        super();
+        this.setLayout(new GridLayout(2,1));
+
+        icon = new JLabel();
+        icon.setHorizontalAlignment(SwingConstants.CENTER);
+        icon.setVerticalAlignment(SwingConstants.CENTER);
+
+        nom = new ResizeFontLabel("");
+        nom.setOpaque(false);
+        nom.setHorizontalAlignment(SwingConstants.CENTER);
+        nom.setVerticalAlignment(SwingConstants.TOP);
+
+        this.add(icon);
+        this.add(nom);
+        
+
+    }
+
+    public void setLabelIcon(Icon icon) {
+        this.iconInitiale = (ImageIcon) icon;
+        this.icon.setIcon(icon);
+    }
+
+    public void setTextArea(String text) {
+        this.nom.setText(text);
+    }
+    
+    public void updatePosition() {
+        this.updateImage();
+    }
+    
+    private void updateImage() {
+        try {
+            this.icon.setIcon(this.resizeSquareIcon(this.iconInitiale, this.icon));
+        } catch (Exception e) {
+            
+        }
+    }
+
+    private ImageIcon resizeSquareIcon(ImageIcon icon, JLabel label) {
+        int taille = Math.min(label.getWidth(), label.getHeight());
+        return new ImageIcon(icon.getImage().getScaledInstance(taille, taille, Image.SCALE_DEFAULT));
+    }
+}

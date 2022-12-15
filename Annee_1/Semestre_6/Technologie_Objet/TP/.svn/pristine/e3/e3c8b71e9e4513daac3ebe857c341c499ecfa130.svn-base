@@ -1,0 +1,13 @@
+
+Erreur : Erreur d'entrée : 
+		 Option possible : -confiant
+		 Déclaration d'un joueur : nom@strategie
+
+Usage :
+	java allumettes.Jouer joueur1 joueur2
+		joueur est de la forme nom@stratégie
+		strategie = naif | rapide | expert | humain | tricheur
+
+	Exemple :
+		java allumettes.Jouer Xavier@humain Ordinateur@naif
+

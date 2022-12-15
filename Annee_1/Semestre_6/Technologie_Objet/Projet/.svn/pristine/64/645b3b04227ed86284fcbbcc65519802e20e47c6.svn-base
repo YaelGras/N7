@@ -1,0 +1,19 @@
+package src.affichagePartie.affichageChoixAction;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+public class ChoixBatiment extends JPanel {
+    
+
+    public ChoixBatiment() {
+        super();
+        this.setLayout(new FlowLayout());
+
+       
+
+        
+        
+    }
+}

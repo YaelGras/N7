@@ -1,0 +1,25 @@
+package src;
+
+import javax.swing.JFrame;
+
+public class Commande_Quitter implements Commande {
+	/**
+	 * fenetre à quitter si on utilise cette commande
+	 */
+	private JFrame fenetre;
+	
+	public Commande_Quitter(JFrame fenetre) {
+		this.fenetre = fenetre;
+	}
+	
+	@Override
+	public void executer() {
+		this.fenetre.dispose();
+	}
+
+	@Override
+	public String getNom() {
+		return "Quitter";
+	}
+
+}

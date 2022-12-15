@@ -1,0 +1,109 @@
+
+clear all
+close all 
+clc
+Coeff = coefficient(); %% c0 = 8 et c1 = 4
+reponsesFreq (Coeff);
+reponsesImp (Coeff);
+
+function [Coeff] = coefficient()
+    %Fréquence d'échantillonnage
+    Fe = 24000;
+    %Débit binaire
+    Rb = 3000;
+    %Coefficient d'atténuation du signal direct
+    alpha0 = 1;
+    %Coefficient d'atténuation du signal réfléchi
+    alpha1 = 0.5;
+    %facteur de suréchantillonage
+    Ns = Fe/Rb;
+    %Réponse impulsionnelle du filtre de mise en forme
+    he = ones(1, Ns); % Le filtre est un filtre rectangulaire de hauteur 1
+    %Réponse impulsionnelle du filtre de réception
+    hr = fliplr(he);
+    hc = kron([alpha0 alpha1], [1 zeros(1, Ns-1)]); %Filtre canal
+
+    %filtrage de mise en forme du dirac
+    x = filter(he,1,[1 zeros(1, 80)]);
+    %Passage par le canal de transmission
+    xe = filter(hc, 1, x);     
+    %filtrage de réception
+    y = filter(hr,1,xe);
+    %Echantillonnage avec n0 = Ns
+    yech = y((Ns : Ns: length(y)));
+    
+    Neg = floor(length(y) / Ns);
+    Ze = toeplitz(yech(1:Neg), [yech(1) zeros(1, Neg-1)]);
+    Coeff = Ze^(-1) * [1 zeros(1, size(Ze, 2)-1)].';
+
+    figure("Name","Signal échantillonée en sortie sans bruit",NumberTitle="off")
+    stem(yech)
+end 
+
+
+function [] = reponsesFreq (Coeff)
+    Fe = 24000;
+    Rb = 3000;
+    alpha0 = 1;
+    alpha1 = 0.5;
+    Ns = Fe/Rb;
+    hc = kron([alpha0 alpha1], [1 zeros(1, Ns-1)]); %Filtre canal
+    heg = kron(Coeff', [1 zeros(1, Ns-1)]);
+    Hc = fft(hc, 101);
+    Heg = fft(heg, 101);
+    figure("Name","Réponse en fréquence du canal de propagation, de l'égaliseur et du produit des deux")
+    X = power(10, linspace(1e-5, log10(Fe/2), length(Hc)/2));
+    HcD = fftshift(10 * log10(abs(Hc)));
+    plot(X, HcD(1:length(Hc)/2));
+    hold on;
+    HegD = fftshift(10 * log10(abs(Heg)));
+    plot(X, HegD(1:length(Hc)/2));
+    HcegD = fftshift(10 * log10(abs(Hc.*Heg)));
+    plot(X, HcegD(1:length(Hc)/2));
+    legend("Réponse en fréquence du canal de propagation", "Réponse en fréquence de l'égaliseur", "Réponse en fréquence du produit des deux");
+end
+
+function [] = reponsesImp (Coeff)
+    Fe = 24000;
+    Rb = 3000;
+    alpha0 = 1;
+    alpha1 = 0.5;
+    Ns = Fe/Rb;
+    hc = kron([alpha0 alpha1], [1 zeros(1, Ns-1)]); %Filtre canal
+    heg = kron(Coeff', [1 zeros(1, Ns-1)]);
+    he = ones(1, Ns); % Le filtre est un filtre rectangulaire de hauteur 1
+    hr = fliplr(he);
+
+    figure("Name","Réponse impulsionnelle de la chaîne de transmission échantillonnée à Ns")
+    g = conv(he, hc);
+    g = conv(g, hr);
+    stem(g(Ns:Ns:end))
+    hold on;
+    g = conv(g, heg);
+    stem(g(Ns:Ns:end))
+end
+% 
+% function [] = constellations (Coeff)
+%     Fe = 24000;
+%     Rb = 3000;
+%     alpha0 = 1;
+%     alpha1 = 0.5;
+%     Ns = Fe/Rb;
+%     he = ones(1, Ns); % Le filtre est un filtre rectangulaire de hauteur 1
+%     hr = fliplr(he);
+%     hc = kron([alpha0 alpha1], [1 zeros(1, Ns-1)]); %Filtre canal
+% 
+% 
+%     x = filter(he,1,[1 zeros(1, 80)]);
+%     
+%     xe = filter(hc, 1, x);     
+% 
+%     y = filter(hr,1,xe);
+%     yech = y((Ns : Ns: length(y))); 
+%     Neg = floor(length(y) / Ns);
+%     Ze = toeplitz(yech(1:Neg), [yech(1) zeros(1, Neg-1)]);
+%     Coeff = Ze^(-1) * [1 zeros(1, size(Ze, 2)-1)].';
+% 
+%     figure("Name","Signal échantillonée en sortie sans bruit",NumberTitle="off")
+%     stem(yech)
+% end

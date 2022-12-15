@@ -1,0 +1,7 @@
+copy.txt
+cpfic
+cp.c
+ls.c
+fichier.txt
+lsfic
+a.out

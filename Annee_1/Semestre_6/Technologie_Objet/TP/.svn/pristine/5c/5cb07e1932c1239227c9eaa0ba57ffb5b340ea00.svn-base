@@ -1,0 +1,29 @@
+package allumettes;
+
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public class HumainStrategie implements Strategie{
+	private Scanner scanner;
+	
+	public HumainStrategie() {
+		this.scanner = new Scanner(System.in);
+	}
+	
+	@Override
+	public int getPrise(Jeu jeu) {
+		boolean reponseInvalide;
+		int prise = 0;
+		do {
+			try {
+				prise = scanner.nextInt();
+				reponseInvalide = false;
+			} catch (NoSuchElementException e1) {
+				reponseInvalide = true;
+				System.err.println("Humain : un entier est attendu");
+			}
+		} while (reponseInvalide);
+		return prise;
+	}
+
+}

@@ -1,0 +1,96 @@
+package allumettes;
+
+public class Arbitre {
+	private Joueur joueur1;
+	private Joueur joueur2;
+	private Boolean confiant;
+	
+	
+	Arbitre(Joueur j1, Joueur j2, boolean confident){
+		this.joueur1 = j1;
+		this.joueur2 = j2;
+		this.confiant = confident;
+	}
+	
+	Arbitre(Joueur j1, Joueur j2){
+		this(j1, j2, false);
+	}
+	
+	void arbitrer(Jeu jeu){
+		boolean finPartie = false;
+		do {
+			if (!finPartie) {
+				finPartie = tourJoueur(this.joueur1, jeu);
+			}
+			if (!finPartie) {
+				finPartie = tourJoueur(this.joueur2, jeu);		
+			}
+		} while (!finPartie);
+		
+	}
+	
+	private boolean tourJoueur(Joueur joueur, Jeu jeu) {
+		
+		// On enregistre le nombre d'allumettes restante avant le tour 
+		// pour pouvoir vérifier la triche et puis afficher la prise si 
+		// aucune triche n'est avérée.
+		int nombreAllumettes = jeu.getNombreAllumettes();
+		
+		priseJoueur(joueur, jeu);
+		
+		boolean triche = verifierTour(nombreAllumettes, jeu);		
+		
+		return finTour(joueur, jeu, triche, nombreAllumettes);		
+	}
+	
+	
+	private void priseJoueur(Joueur joueur, Jeu jeu) {
+		
+		System.out.println("Allumettes restantes : " + jeu.getNombreAllumettes());
+		boolean suite;
+		do {			
+			try {
+				jeu.retirer(joueur.getPrise(jeu));
+				suite = true;
+			} catch (CoupInvalideException e) {
+				System.out.print("Impossible ! Nombre invalide : " + e.getCoup());
+				System.out.println(" " + e.getMessage());
+				suite = false;
+			}
+		} while (!suite);
+		
+	}
+	
+	private boolean verifierTour(int nombreAllumettes, Jeu jeu) {
+		return nombreAllumettes - jeu.getNombreAllumettes() > jeu.PRISE_MAX;
+	}
+	
+	private boolean finTour(Joueur joueur, Jeu jeu, boolean triche, int nombreAllumettes) {
+		
+		boolean finPartie = false;
+		
+		if(triche && !this.confiant) {
+			System.out.println("Abandon de la partie car " + joueur.getNom() + " triche !");
+			finPartie = true;
+		} else {
+			
+			System.out.print(joueur.getNom() + " prend ");
+			System.out.println((nombreAllumettes - jeu.getNombreAllumettes()) + " allumettes.");
+			System.out.println("");
+			
+			if (jeu.getNombreAllumettes() == 0) {
+				
+				finPartie = true;
+				System.out.println(joueur.getNom() + " perd !");
+				
+				if(joueur.getNom() == this.joueur1.getNom()) {
+					System.out.println(this.joueur2.getNom() + " gagne !");
+				} else {
+					System.out.println(this.joueur1.getNom() + " gagne !");
+				}
+			}			
+		}
+		
+		return finPartie;
+	}
+}

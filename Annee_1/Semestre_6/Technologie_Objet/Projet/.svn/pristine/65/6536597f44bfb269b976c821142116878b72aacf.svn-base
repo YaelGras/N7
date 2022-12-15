@@ -1,0 +1,11 @@
+package src;
+
+public class Affichage {
+	
+	private Figure dessin;
+	
+	public void afficher() {
+		
+	}
+	
+}
