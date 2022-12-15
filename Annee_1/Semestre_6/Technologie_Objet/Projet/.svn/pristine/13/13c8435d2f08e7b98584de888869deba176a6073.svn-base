@@ -1,8 +1,0 @@
-public interface Batiment {
-
-	int[] getAccesRoute();
-
-	Parcelle[] getParcelles();
-
-	Case[] getCases();
-}

@@ -1,7 +1,0 @@
-package src;
-
-public abstract class Industrie {
-
-    // définir le nb max d'ouvrier qui pourront construire des bâtiments
-    
-}

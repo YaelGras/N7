@@ -1,8 +1,0 @@
-package src;
-
-public class PetiteHabitation extends Habitation {
-
-	static final private int[] accesRouteRel;
-	static final private int[] parcellesRel;
-	static final private int capacite;
-
