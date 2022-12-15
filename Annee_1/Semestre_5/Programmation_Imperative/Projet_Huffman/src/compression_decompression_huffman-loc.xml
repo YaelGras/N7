@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 1" line=" 407" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 147" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/decompression.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 24" line=" 170" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/compression.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

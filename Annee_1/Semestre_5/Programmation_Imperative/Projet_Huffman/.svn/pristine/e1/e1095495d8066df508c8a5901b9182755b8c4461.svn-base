@@ -1,0 +1,67 @@
+with arbre_de_huffman; use arbre_de_huffman;
+
+procedure test_arbre_huffman is
+
+        procedure test_calcul_freq() is
+        begin
+
+        end test_calcul_freq;
+
+        procedure test_construire_arbre() is
+        begin 
+
+        end test_construire_arbre;
+
+        procedure test_vider_arbre() is
+        begin
+
+        end test_vider_arbre;
+
+        procedure test_fabriquer_dict() is
+        begin
+
+        end test_fabriquer_dict;
+
+        procedure test_la_donnee_dict() is
+        begin
+
+        end test_la_donnee_dict;
+
+        procedure test_le_caractère_dict() is
+        begin
+
+        end test_le_caractère_dict;
+
+        procedure test_recup_arbre() is 
+        begin
+
+        end test_recup_arbre;
+
+        procedure test_code_est_present_dict() is
+        begin
+
+        end test_code_est_present_dict;
+
+        procedure test_arbre_en_binaire() is
+        begin
+
+        end test_arbre_en_binaire;
+
+        procedure test_table_en_binaire() is 
+        begin
+        
+        end test_table_en_binaire;
+
+        procedure test_afficher_arbre() is
+        begin
+
+        end test_afficher_arbre;
+
+
+
+
+
+begin
+
+
+end arbre_de_huffman;

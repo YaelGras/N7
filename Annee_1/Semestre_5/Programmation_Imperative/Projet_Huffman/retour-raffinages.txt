@@ -1,0 +1,18 @@
+Compression :
+
+Très bien d'avoir des intitulés de raffinages complets et précis.
+On s'attendrait à avoir quelque part "Déterminer si l'option -b est mise", qui renvoie un booléen en out, puis à voir ce booléen en in chaque fois que vous avez besoin de savoir si l'option -b est mise.
+Attention aux structures de contrôles masquées : "Afficher l’arbre de Huffman et le Dictionnaire dans le cas où l’option -b est mise" devrait faire l'objet d'un Si ...
+Dans R1 : "Modifier et enregistrer les octets du texte selon le dictionnaire créé dans le fichier.hff" => "Encoder" me paraît plus précis.
+Dans R1 : "Enregistrer le tableau des caractères et l’arbre de Huffman dans le fichier .hff" => Peut-être "Écrire" plutôt que "Enregistrer", et de même dans R2, "Écrire" plutôt que "Enregistrement" (ou a minima "Enregistrer" pour avoir un verbe à l'infinitif comme pour vos autres procédures).
+Dans R2 : "Comment “créer l’arbre de Huffman et le dictionnaire d’un fichier texte avec ou sans l’option -b” ?" => Homogénéiser, beaucoup de verbes à l'infinitif mais pas pour CALCUL_FREQ.
+
+Le raffinage est correct dans l'ensemble mais ne va pas assez en profondeur, il aurait fallu aussi les raffinages de CALCUL_FREQ, CONSTRUIRE_ARBRE, FABRIQUER_DICT, etc.
+
+Décompression :
+
+Mêmes remarques dans l'ensemble, les raffinages sont biens mais pas terminés, il aurait fallu aussi raffiner RECUP_ARBRE, FABRIQUER_DICT.
+
+Module :
+
+Très bien pour les contrats des différentes fonctions et procédures, notamment d'avoir inclus des tests.

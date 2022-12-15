@@ -1,0 +1,23 @@
+arbre_de_huffman.adb:4:14: error: missing body for "Convertir_Binaire" declared at arbre_de_huffman.ads:106
+arbre_de_huffman.adb:44:49: warning: value not in range of type "Standard.Positive" [enabled by default]
+arbre_de_huffman.adb:44:49: warning: "Constraint_Error" will be raised at run time [enabled by default]
+arbre_de_huffman.adb:58:29: warning: "Table.Taille" may be referenced before it has a value [enabled by default]
+arbre_de_huffman.adb:107:13: error: "Assembler_2arbres" is undefined
+arbre_de_huffman.adb:139:55: error: formal parameter "Arbre" cannot be used before end of specification
+arbre_de_huffman.adb:150:09: error: too many arguments in call to "Fabriquer_Dict_recursive"
+arbre_de_huffman.adb:156:38: error: formal parameter "Arbre" cannot be used before end of specification
+arbre_de_huffman.adb:156:52: error: formal parameter "Arbre" cannot be used before end of specification
+arbre_de_huffman.adb:166:16: error: too many arguments in call to "Code_LCA"
+arbre_de_huffman.adb:166:41: error: "Hachage" is undefined
+arbre_de_huffman.adb:177:13: error: "Caractere_LCA" is undefined (more references follow)
+arbre_de_huffman.adb:180:23: warning: variable "Trouve" is not modified in loop body [enabled by default]
+arbre_de_huffman.adb:180:23: warning: possible infinite loop [enabled by default]
+arbre_de_huffman.adb:190:40: error: formal parameter "Arbre" cannot be used before end of specification
+arbre_de_huffman.adb:235:43: error: "Convertir_Binaire_Caractere" is undefined (more references follow)
+arbre_de_huffman.adb:258:27: error: "Liste_Arbre" is undefined (more references follow)
+arbre_de_huffman.adb:266:16: error: expected private type "Ada.Strings.Unbounded.Unbounded_String"
+arbre_de_huffman.adb:266:16: error: found type "Standard.Boolean"
+arbre_de_huffman.adb:273:16: error: expected private type "Ada.Strings.Unbounded.Unbounded_String"
+arbre_de_huffman.adb:273:16: error: found an access type
+arbre_de_huffman.adb:280:13: error: missing ";"
+arbre_de_huffman.adb:287:13: error: missing ";"

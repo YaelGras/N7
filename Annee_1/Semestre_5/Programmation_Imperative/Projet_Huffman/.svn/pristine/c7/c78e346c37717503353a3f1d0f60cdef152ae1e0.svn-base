@@ -1,0 +1,25 @@
+project Compression_Decompression_Huffman is
+
+   for Languages use ("Ada");
+   for Source_Dirs use ("src_ada");
+
+   package Make is
+      for Makefile use "Makefile";
+    end Make;
+
+    package Builder is
+      for Default_Switches ("ada") use ("-s");
+   end Builder;
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-gnatwa", "-gnata", "-g");
+   end Compiler;
+
+   package Binder is
+      for Default_Switches ("ada") use ("-E");
+   end Binder;
+
+   for Main use ("test_arbre_huffman.adb") & project'Main;
+
+end Compression_Decompression_Huffman;
+

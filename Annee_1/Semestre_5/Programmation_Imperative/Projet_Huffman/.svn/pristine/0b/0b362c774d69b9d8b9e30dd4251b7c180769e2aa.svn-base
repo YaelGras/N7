@@ -1,0 +1,25 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with arbre_de_huffman; use arbre_de_huffman;
+with Ada.Streams.Stream_IO; use Ada.Streams.Stream_IO;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with System.Assertions; use System.Assertions;
+with Ada.IO_Exceptions; use Ada.IO_Exceptions;
+with Ada.Command_Line; use Ada.Command_Line;
+
+
+procedure Decompression is
+    
+    -- Affiche l'utilisation de la commande 
+    procedure Afficher_Usage is
+    begin
+        New_Line;
+        Put_Line("Usage : " & Command_Name & " Nom_Fichier");
+        New_Line;
+        Put_Line("Nom_Fichier : Nom des fichiers à compresser en .hff");
+        New_Line;
+    end Afficher_Usage;
+    
+    
+begin
+   
+end Decompression;

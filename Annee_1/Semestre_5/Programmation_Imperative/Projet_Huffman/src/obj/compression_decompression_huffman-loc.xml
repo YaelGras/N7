@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<Locations>
+  <Project>
+    <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 34" line=" 4" >
+      <vfs_project />
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 56" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 21" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 247" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 252" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 24" line=" 40" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 62" line=" 235" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 222" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 34" line=" 4" >
+      <vfs_project />
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 222" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 12" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 26" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 59" line=" 70" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 73" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 44" line=" 139" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 142" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 18" line=" 131" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 142" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 18" line=" 141" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 156" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 158" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 45" line=" 156" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 29" line=" 190" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 18" line=" 192" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 4" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 45" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 4" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 76" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 4" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 120" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 4" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 333" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 339" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 25" line=" 12" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 18" line=" 68" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 47" line=" 237" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 79" line=" 243" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 75" line=" 249" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 21" line=" 332" >
+      <vfs_project>/home/ygras2/Annee_1/PIM/MN01/src/compression_decompression_huffman.gpr</vfs_project>
+      <vfs_file>/home/ygras2/Annee_1/PIM/MN01/src/src_ada/arbre_de_huffman.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
